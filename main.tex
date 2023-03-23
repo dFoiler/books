@@ -1,0 +1,51 @@
+% LTeX: enabled=false
+
+\documentclass[openany]{book}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\nirpdftitle}{Complex Representations of GL(2,K) for Finite Fields K}
+\usepackage{import}
+\inputfrom{../notes}{nir}
+
+\pagestyle{contentpage}
+
+\title{Complex Representations of \texorpdfstring{$\op{GL}(2,K)$}{GL(2,K)} for Finite Fields \texorpdfstring{$K$}{K}}
+\author{Ilya Piatetski-Shapiro}
+\date{1983}
+% \rhead{\textit{104: INTRO. TO ANALYSIS}}
+
+\begin{document}
+
+\maketitle
+
+\toctrue
+\tableofcontents
+\tocfalse
+
+\newpage
+
+\toctrue
+\chapter*{Forward}
+\tocfalse
+
+\subfile{chaps/forward}
+
+\toctrue
+\chapter*{Introduction} \addcontentsline{toc}{chapter}{Introduction}
+\tocfalse
+
+\subfile{chaps/intro}
+
+\chapter{Preliminaries: Represetation Theory; the general linear group}
+
+\subfile{chaps/ch1}
+
+\chapter{The Representations of \texorpdfstring{$\op{GL}(2,K)$}{GL2(K)}}
+
+\subfile{chaps/ch2}
+
+\chapter{\texorpdfstring{$\Gamma$}{Gamma}-functions and Bessel functions}
+
+\subfile{chaps/ch3}
+
+\end{document}

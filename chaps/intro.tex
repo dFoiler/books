@@ -1,0 +1,55 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+The aim of these notes is to give a description of the complex irreducible representations of the group $G=\op{GL}(2,K)$, where $K$ is a finite field with $q>2$ elements. In addition, these notes should also serve as a motive for the study of the representation of $\op{GL}(2,K)$, where $K$ is a local field. Therefore, an attempt has been made to reprove theorems by not explicitly using the finiteness of $K$.
+
+A central role in the description of the representations of $G$ is played by the Borel subgroup consisting of all matrices
+\[b=\begin{bmatrix}
+	\alpha & \beta \\
+	0 & \delta
+\end{bmatrix}\qquad\alpha,\delta\in K^\times,\qquad\beta\in K.\]
+If $\mu_1$, $\mu_2$ are characters of $K^\times$, then a character $\mu$ of $B$ can be defined by $\mu(b)=\mu_1(\alpha)\mu_2(\delta)$. Let $\hat\mu=\op{Ind}^G_B$ be the induced representation. If $\mu_1=\mu_2$, then $\hat\mu$ splits as the direct sum of a one-dimensional representation $\rho'_{\mu_1,\mu_1}$ which is given by formula $\rho'_{\mu_1,\mu_1}(g)=\mu_1(\deg g)$, and a $q$-dimensional irreducible representation $\rho_{\mu_1,\mu_1}$. There are $q-1$ representations of each kind. If $\mu_1\ne\mu_2$, then $\hat\mu=\rho_{\mu_1,\mu_2}$ is an irreducible representation of dimension $q+1$. There are $\frac12(q-1)(q-2)$ representations of this kind. Irreducible representations that are not of the above types are of dimension $q-1$ and are called cuspidal representations. They are however also connected with linear characters in the following way. Let $L$ be the unique quadratic extension of $K$ and let $\nu$ be a character of $L^\times$ for which there does not exist a character $\chi$ of $K^\times$ such that $\chi(\op N_{L/K}z)=\nu(z)$ for every $z\in L^\times$. Such a $\nu$ is said to be non-decomposable. For each non-decomposable character $\nu$ of $L^\times$, we explicitly construct an irreducible representation $\rho_\nu$ of $G$ and prove that it is cuspidal. Conversely, w prove that every cuspidal representation of $G$ is of the form $\rho_\nu$ for some non-decomposable character $\nu$ of $L^\times$. Thus, there are $\frac12\left(q^2-q\right)$ cuspidal representations.
+
+The connection between the irreducible representations of $G$ and the characters of $K^\times$ and $L^\times$ gives rise to a reciprocity law. Let $W(L/K)=L^\times\rtimes\op{Gal}(L/K)$ be the semi-direct product of $L^\times$ by $\op{Gal}(L/K)$. The irreducible representations of $W(L/K)$ (which is called the small Weil group) of dimension $\le2$. The announced reciprocity law is a natural bijection between the two-dimensional representations of $W(L/K)$ (including the reducible ones) and the irreducible representations of $G$ of dimension $>1$.
+
+Next, we attempt to give explicit models for the irreducible representations of $G$. Let $\psi$ be a non-unit character of $K^+$. The additive group $K^+$ can be canonically identified with the subgroup $U$ of $G$ consisting of all the matrices of the form
+\[\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix},\qquad\beta\in K.\]
+Therefore, $\psi$ can also be constructed as a character of $U$. We prove that $\op{Ind}^G_U\psi$ splits into the direct sum of all irreducible representations $\rho$ of $G$ of dimension $>1$.; each $\rho$ appears with multiplicity $1$. The space $V_\rho$ on which $\rho$ acts can therefore be embedded into $\op{Ind}^G_UV_\psi$. Thus, to each $v\in V_\rho$, there corresponds a function $W_v\colon G\to\CC$ such that $W_v(ug)=\psi(u)W'_v(g)$ for every $u\in U$ and $g\in G$. The action of $\rho$ on these functions is given by $W_{\rho(s)v}(g)=W_v(gs)$. The collection of all the $W_v$ is called a Whittaker model for $\rho$. It has the following property: for all characters $\omega$ of $K^\times$, except possible two, there exists complex numbers $\Gamma_\rho(\omega)$ such that
+\begin{equation}
+	\Omega_\rho(\omega)\sum_{x\in K^\times}W_v\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\omega(x)=\sum_{x\in K^\times}W_v\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\omega(x) \label{eq:fund-eq-whittaker}
+\end{equation}
+for every $v\in V_\rho$. If $\rho$ is a cuspidal representation, then $\Gamma_\rho(\omega)$ is defined for every $\omega$.
+
+Among the Whittaker functions for $\rho$, there is a special one, $J_\rho$, called the Bessel function of $\rho$, that satisfies
+\[J_\rho(gu)=J_\rho(ug)=\psi(u)J_\rho(g)\qquad\text{for}\qquad u\in U,g\in G.\]
+Further, $J_\rho(1)=1$ and $J_\rho(u)=0$ for $u\in U$ and $u\ne1$. Substituting this function for $W_v$ in \eqref{eq:fund-eq-whittaker},
+\[\Gamma_\rho(w)=\sum_{x\in K^\times}J_\rho\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\omega(x).\]
+This formula is then used to express $\Gamma_\rho(\omega)$ in terms of Gauss sums.
+\begin{itemize}
+	\item If $\rho=\rho_{\mu_1,\mu_2}$ is a non-cuspidal representation of $G$, then
+	\[\Gamma_\rho(\omega)=\frac{\omega(-1)}qG_K\left(\mu_1^{-1}\omega^{-1},\psi\right)G_K\left(\mu_2^{_1}\omega^{-1},\psi\right).\]
+	\item If $\rho=\rho_\nu$ is a cuspidal representation, then
+	\[\Gamma_\rho(\omega)=\frac{\nu(-1)}qG_L\left(\nu\circ(\omega\circ{\op N_{L/K}})^{-1},\psi\circ\op{Tr}_{L/K}\right).\]
+\end{itemize}
+The Gauss sum $G_K(\chi,\psi)$ is defined for a character $\psi$ of $K^\times$ by
+\[G_K(\chi,\psi)=\sum_{x\in K^\times}\chi(x)\psi(x).\]
+In particular, it follows that in every case $|\Gamma_\rho(\omega)|=1$.
+
+All of these results are finally applied in order to compute the character table for $G$.
+
+\end{document}
