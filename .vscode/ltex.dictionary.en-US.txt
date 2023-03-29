@@ -431,3 +431,10 @@ co-effaceable
 diagonality
 non-cuspidal
 Schur
+subobjects
+suprepresentations
+subrepresentation
+Maschke
+subrepresentations
+isotypical
+decompositions

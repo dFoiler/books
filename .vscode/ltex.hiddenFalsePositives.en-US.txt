@@ -181,3 +181,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qby \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qfor a non-cuspidal \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qfor a cuspidal \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThis decomposition of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is unique, up to the order of the summands.\\E$"}

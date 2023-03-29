@@ -4,9 +4,67 @@
 
 \begin{document}
 
-\section{Linear representations of finite groups}
+In the first three sections of this chapter, we bring all the definitions and theorems about linear representations of finite groups that we need in these notes. We refer to the appendix for proofs. The remaining two sections are devoted to a description of the group-theoretic properties of $\op{GL}(2,K)$, where $K$ is a finite field.
+
+\section{Linear representations of finite groups} \label{sec:intro-line-reps}
+Let $V$ be a finite-dimensional vector space over the field $\CC$ of the complex numbers. Denote by $\op{Aut}(V)$ the group of all automorphisms of $V$. Let $G$ be a finite group. A \textit{linear representation} of $G$ in $V$ is a homomorphism $\rho$ of $G$ into $\op{Aut}(V)$. Then $V$ is said to be the \textit{representation space} of $\rho$ and is also denoted by $V_\rho$. We shall also say that $G$ \textit{acts on $V_\rho$ through $\rho$}. The \textit{dimension} of $\rho$ is defined to be the dimension of $V_\rho$ and is denoted by $\dim\rho$. Two representations $\rho$ and $\rho'$ of $G$ are said to be \textit{isomorphic} if there exists an isomorphism $\theta\colon V_\rho\to V_{\rho'}$ such that $\theta\circ\rho(g)=\rho'(g)\circ\theta$ for every $g\in G$. We shall usually identify isomorphic representations.
+
+A representation of $G$ of dimension $1$ is a homomorphism $\mu$ of $G$ into the multiplicative group $\CC^\times$ of $\CC$. Such a representation is called in these notes a \textit{character} of $G$. In particular, the unit character is the homomorphism of $G$ into $\CC^\times$ obtaining the value $1$ for every $g\in G$.
+
+Let $\rho$ be a representation of $G$ and let $H$ be a subgroup of $G$. Suppose that $\mu$ is a character of $H$ for which there exists a nonzero $v\in V_\rho$ such that $\rho(h)v=\mu(h)v$ for every $h\in H$. Then $\mu$ is said to be an \textit{eigenvalue} of $H$ (with respect to $\rho$), and $v$ is said to be an \textit{eigenvector} of $H$ that belongs to $\mu$.
+
+Again, consider a representation $\rho$ of $G$ and let $V'$ be a subspace of $V=V_\rho$ which is left invariant by $\rho(g)$ for every $g\in G$. In this case, we say that $V'$ is \textit{left-invariant} by $G$ or that $V'$ is a $G$-subspcae of $V$. Then the restriction map of $\rho(g)$ to $V'$ gives rise to a representation $\rho'$ of $G$ with $V'$ as its representation space. This representation is said to be a \textit{subrepresentation} of $\rho$, and we write $\rho'\le\rho$.
+
+By a theorem of Maschke $V'$ has a complement in $V$, i.e., there exists another $G$-subspace $v''$ of $V$ such that $V=V'\oplus V''$. Let $\rho''$ be the corresponding subrepresentation of $\rho$. Then $\rho$ is said to be a \textit{direct sum} of $\rho'$ and $\rho''$, and we write $\rho=\rho'\oplus\rho''$. Clearly $\dim\rho=\dim\rho'+\dim\rho''$. The direct sum of $n$ representations of $G$, all isomorphic to $\rho$, is denoted by $n\rho$. A representation $\rho$ of $V$ is said to be \textit{irreducible} if its does not have a subrepresentation $\rho'$ of a lower dimension. By the theorem of Maschke, this is equivalent to saying that $\rho$ cannot be decomposed as a direct sum $\rho=\rho'\oplus\rho''$ with $\dim\rho',\dim\rho''<\dim\rho$. It follows that every representation $\rho$ of $G$ can be represented as a direct sum
+\[\rho=\bigoplus_{i=1}^kn_i\rho_i,\]
+where the $\rho_i$ are distinct (i.e., not-isomorphic) irreducible representations of $G$. This decomposition of $\rho$ is unique, up to the order of the summands.
+
+There are only finitely many irreducible representations $\rho_1,\ldots,\rho_n$ of $G$. Their number $h$ is called to the number of the conjugacy classes of $G$. Their dimensions satisfy the formula
+\begin{equation}
+	\sum_{i=1}^n(\dim\rho_i)^2=|G|. \label{eq:dim-irred-form}
+\end{equation}
+If $G$ is abelian, then \eqref{eq:dim-irred-form} implies that the irreducible representations of $G$ are of dimension $1$ (i.e., they are characters) and that their number is equal to $|G|$, which in this case is the number of the conjugacy classes of $G$. Further, the set of characters of $G$ forms a multiplicative group $\widehat G$ which is isomorphic to $G$. If $1\ne\chi\in\widehat G$, then we have the following orthogonality relation:
+\[\sum_{g\in G}\chi(g)=0.\]
+A lemma of Artin says that the characters of $G$ are linearly independent; i.e., if $a_\chi$ are complex numbers such that $\sum_{\chi\in\widehat G}a_\chi\chi(g)=0$ for every $g\in G$, then $a_\chi=0$ for all $\chi\in G$. Now, $G$ is canonically isomorphic to the dual $\widehat{\widehat G\,}$ of $\widehat G$. Hence, the dual to this lemma is also true: if $b_g$ are complex numbers such that $\sum_{g\in G}b_g\chi(g)=0$ for every $\chi\in G$, then $b_g=0$ for all $g\in G$.
+
+If $G$ is again an arbitrary group, then we deduce it has $[G:G^c]$ characters, where $G^c$ is the commutator subgroup of $G$. Another consequence of \eqref{eq:dim-irred-form} is that if distinct irreducible representations $\rho_1,\ldots,\rho_n$ of $G$ satisfy $\sum_{i=1}^n(\dim\rho_i)^2=|G|$, then they are all the irreducible representations of $G$.
+
+Let $\rho$ be a representation of a finite group $G$. Then $V_\rho$ can also be considered as a module over the group ring $\CC[G]$. If $\rho'$ is an additional representation, then we write $(\rho,\rho')=(\rho,\rho')_G\coloneqq\dim\op{Hom}_{\CC[G]}(V_\rho,V_{\rho'})$. The form $(\rho,\rho')$ is clearly symmetric and bilinear with respect to direct sums. If $\rho$ and $\rho'$ are irreducible, then, by a lemma of Schur, $(\rho,\rho')=1$ if $\rho=\rho'$ and $(\rho,\rho')=0$ if $\rho\ne\rho'$. It follows that two arbitrary representations $\rho$ and $\rho'$ are \textit{disjoint}, i.e., have no common irreducible subrepresentations, if and only if $(\rho,\rho')=0$. In particular, an irreducible representation $\rho$ \textit{appears} in a representation $\rho'$, i.e., $\rho\le\rho'$, if and only if $(\rho,\rho')\ne0$; indeed, $(\rho,\rho')$ is equal to the multiplicity in which $\rho$ appears in $\rho'$.
+
+Let $\op{End}_{\CC[G]}V_\rho\coloneqq\op{Hom}_{\CC[G]}(V_\rho,V_\rho)$. It is an algebra over $\CC$ called the \textit{Schur algebra}. If $\rho$ is irreducible, then $\op{End}_{\CC[G]}V)_{n\rho}$ is isomorphic to $M_n(\CC)$, the algebra of all $n\times n$ matrices over $\CC$. If $\rho=\bigoplus_{i=1}^kn_i\rho_i$ is the canonical decomposition of a representation $\rho$, then, by Schur's lemma,
+\[\op{End}_{\CC[G]}V_\rho=\bigoplus_{i=1}^kM_{n_i}(\CC).\]
+Hence, $(\rho,\rho)=\dim\op{End}_{\CC[G]}V_\rho=\sum_{i=1}^kn_i^2$. It follows that $\rho$ has no multiple components, i.e., that $n_i=1$ for all $i$, if and only if $\op{End}_{\CC[G]}V_\rho$ is commutative. In this case, $\dim\op{End}_{\CC[G]}V_\rho$ is the number of components of $\rho$.
+
+Finally, consider a vector space $V$ of dimension $n$ over $\CC$. Every base $v_1,\ldots,v_n$ of $V$ canonically defines an isomorphism $\op{Aut}V\cong\op{GL}(n,\CC)$ (which is the group of all $n\times n$ invertible matrices over $\CC$). If $\rho\colon G\to\op{Aut}V$ is a representation of $G$, then we define $\chi_\rho(g)$ to be the trace of $\rho(g)$, where $\rho(g)$ is now considered as an element of $\op{GL}(n,\CC)$ via the above isomorphism. Clearly, $\op{tr}\rho(g)$ does not depend on the choice of the basis $v_1,\ldots,v_n$ of $V$. Hence, $\chi_\rho\colon G\to\CC$ is a well-defined function, called the \textit{character of $\rho$}. It is constant on conjugacy classes. Also, $\chi_{\rho_1\oplus\rho_2}=\chi_{\rho_1}+\chi_{\rho_2}$. Therefore, $\chi_\rho$ is said to be \textit{irreducible} if $\rho$ is irreducible. If $\dim\rho=1$, then $\chi_\rho=\chi$. In general, one defines $\dim\chi_\rho=\dim\rho$ and refers to $\chi_\rho$ as a \textit{higher-dimensional character}.
 
 \section{Induced representations}
+Let $G$ be a finite group and let $H$ be a subgroup operating on a finite-dimensional $\CC$-vector space $W$ through a representation $\tau\colon H\to\op{Aut}W$. Define a vector space $V$ to be the set of all functions $f\colon G\to W$ that satisfy
+\[f(hg)=\tau(h)f(g)\qquad\text{for all }h\in H\text{ and }g\in G.\]
+Thus, in order to define an element $f\in V$, it suffices to give its values on a system of representatives $G/H$ of the left classes of $G$ modulo $H$. Define an operation of $G$ on $V$ by
+\[(sf)(g)\coloneqq f(gs)\qquad\text{for }s,g\in G\text{ and }f\in V.\]
+The $\CC[G]$-module $V$ thus obtained is called the \textit{induced module of $W$ from $H$ to $G$} and is denoted by $\op{Ind}^G_H\tau$.
+
+We embed $W$ in $V$ by mapping each $w\in W$ to the function $f_w\colon W\to\CC$ defined by $f_w(g)\coloneqq\tau(g)w$ if $g\in H$ and $f_w(g)=0$ if $g\in G\setminus H$. Clearly, this is a $\CC[H]$-module embedding. The image of $W$ in $V$ consists of all the functions $f\in V$ that vanish on $G\setminus H$.
+
+Let now $G=\bigsqcup_{r\in R}rH$ be a decomposition of $G$ into left classes modulo $H$. For every $f\in V$ and for every $r\in R$, we define a function $f_r\in V$ by $f_r(g)\coloneqq f(g)$ if $g\in Hr^{-1}$ and $f_r(g)=0$ otherwise. Then $r^{-1}f_r$ belongs go $W$ (after identifying $W$ with its image in $V$), and
+\[f=\sum_{r\in R}r\left(r^{-1}f_r\right).\]
+Thus, $V$ is isomorphic to $\bigoplus_{r\in R}rW$. In particular, we have that $\dim V=[G:H]\dim W$.
+
+Using this isomorphism, one obtains also a canonical isomorphism $V\cong\CC[G]\otimes_{\CC[H]}W$, where $G$ operates on the right-hand side by multiplication on the left of the first factor. This form of the induced representation is convenient to prove the following fundamental properties.
+\begin{listalph}
+	\item Transitivity: If $J$ is a subgroup of $H$ and $\tau\colon J\to\op{Aut}U$ is a representation of $J$, then
+	\[\Ind^G_JU=\Ind^G_H\left(\Ind^H_JU\right).\]
+	\item Frobenius reciprocity theorem: With the above notation, let $E$ be a $\CC[G]$-module, and denote by $\Res^G_HE$ the $\CC[H]$-module obtained from $E$ by considering only the action of $H$. Then we have the following canonical isomorphism:
+	\[\op{Hom}_{\CC[G]}\left(\Ind^G_HW,E\right)\cong\op{Hom}_{\CC[H]}\left(W,\op{Res}^G_HE\right).\]
+	In particular,
+	\[\dim\op{Hom}_{\CC[G]}\left(\Ind^G_HW,E\right)=\dim\op{Hom}_{\CC[H]}\left(W,\op{Res}^G_HE\right).\]
+	If $\tau$ and $\sigma$ are representations of $H$ and $G$ that correspond to $W$ and $E$, respectively, then the last equality can be rewritten, in the notation of \Cref{sec:intro-line-reps}, as
+	\[\left(\Ind^G_H\tau,\sigma\right)_G=\left(\tau,\Res^G_H\sigma\right)_H.\]
+	In particular, if both $\tau$ and $\sigma$ are irreducible, then the multiplicity of $\sigma$ in $\Ind^G_H\tau$ is equal to the multiplicity of $\tau$ in $\Res^G_H\sigma$.
+\end{listalph}
+Finally, if $\tau$ is a representation of a subgroup $H$ of a group $G$, and $\sigma=\Ind^G_H\tau$, then $\chi_\rho$ can be calculated from $\chi_\tau$ by the following formula
+\[\chi_\rho(g)=\frac1{|H|}\sum_{r\in G}\widetilde\chi_\tau\left(sgs^{-1}\right)=\sum){r\in R}\widetilde\chi_\tau\left(rgr^{-1}\right),\]
+where $\widetilde\chi_\tau$ is the function on $G$ that vanishes outside $H$ and coincides with $\chi_\tau$ on $H$; $R$ is a system of representatives of right classes of $G$ modulo $H$.
 
 \section{The Schur algebra}
 
