@@ -67,6 +67,67 @@ Finally, if $\tau$ is a representation of a subgroup $H$ of a group $G$, and $\s
 where $\widetilde\chi_\tau$ is the function on $G$ that vanishes outside $H$ and coincides with $\chi_\tau$ on $H$; $R$ is a system of representatives of right classes of $G$ modulo $H$.
 
 \section{The Schur algebra}
+\begin{proposition} \label{prop:homs-of-ind}
+	Let $H$ and $J$ be subgroups of a finite group $G$. Let $\rho$ and $\sigma$ be representations of $H$ and $J$, respectively. Then $\op{Hom}_{\CC[G]}\left(\op{Ind}^G_HV_\rho,\op{Ind}^G_JV_\sigma\right)$ is isomorphic to the vector space of all functions $F\colon G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ satisfying
+	\begin{equation}
+		F(jgh)=\sigma(j)\circ F(g)\circ\rho(h) \label{eq:desired-schur-vec-space}
+	\end{equation}
+	for all $j\in J$, $g\in G$, and $h\in H$.
+\end{proposition}
+\begin{proof}
+	Let $\widehat\rho\coloneqq\op{Ind}^G_H\rho$, $\widehat\sigma\coloneqq\op{Ind}^G_J\sigma$, and $n\coloneqq[G:H]$. Denote by $F'$ the vector space of all functions
+	\[\varphi\colon G\times G\to\op{Hom}_\CC(V_\rho,V_\sigma)\]
+	that satisfy
+	\begin{equation}
+		\varphi(jg_q,hg_2) = \sigma(j)\circ\varphi(g_1,g_2)\circ\rho(h)^{-1} \label{eq:almost-desired-schur-vec-space}
+	\end{equation}
+	for all $j\in J$, $h\in H$, and $g_1,g_2\in G$. For every $\varphi\in F'$, we define an element $T_\varphi\in\op{Hom}_\CC(V_{\widehat\rho},V_{\widehat\sigma})$ as follows: If $f\in V_{\widehat\rho}$, then $T_\varphi f\colon G\to V_\sigma$ is the map defined
+	\begin{equation}
+		(T_\varphi f)(g)\coloneqq\frac1n\sum_{r\in G}\varphi(g,r)(f(r)); \label{eq:define-desired-schur-iso}
+	\end{equation}
+	clearly, the map $\varphi\mapsto T_\varphi$ is a homomorphism $F'\to\op{Hom}_\CC(V_{\widehat\rho},V_{\widehat\sigma})$. It is injective. Indeed, suppose that $T_\varphi=0$. Let $s\in G$, let $v\in V_\rho$, and define a function $f_{sb}\in V_{\widehat\rho}$ by
+	\[f_{sv}(g)\coloneqq\begin{cases}
+		\rho(h)v & \text{if }g=hs, \\
+		0 & \text{if }g\notin Hs.
+	\end{cases}\]
+	Then substituting $f=f_{sv}$ in \eqref{eq:define-desired-schur-iso} we have by \eqref{eq:almost-desired-schur-vec-space} that $\varphi(g,s)v=0$. Hence, $\varphi(g,s)=0$; i.e., $\varphi=0$.
+
+	The dimension of $F'$ is equal to $[G:H][G:J](\dim\rho)(\dim\sigma)$ by \eqref{eq:almost-desired-schur-vec-space}. This is also the dimension of $\op{Hom}_\CC(V_{\widehat\rho},V_{\widehat\sigma})$. Hence, $T$ is an isomorphism.
+
+	Denote now by $F'_G$ the subspace of all $\varphi\in F'$ such that $T_\varphi\in\op{Hom}_{\CC[G]}(V_{\widehat\rho},V_{\widehat\sigma})$. Clearly $\varphi\in F'_G$ if and only if
+	\begin{equation}
+		\sum_{r\in G}\varphi\left(g,rx^{-1}\right)(f(r))=\sum_{r\in G}\varphi(gx,r)(f(r)) \label{eq:inv-in-almost-desired-schur-vec-space}
+	\end{equation}
+	for all $f\in V_{\widehat\rho}$ and $x\in G$. Substituting $f=f_{sv}$ in \eqref{eq:inv-in-almost-desired-schur-vec-space}, we have that \eqref{eq:inv-in-almost-desired-schur-vec-space} is equivalent to the condition
+	\begin{equation}
+		\varphi\left(g,rx^{-1}\right)=\varphi(gx,r)\qquad\text{for all }g,r,x\in G. \label{eq:better-inv-in-almost-desired-schur-vec-space}
+	\end{equation}
+
+	For every function $F\colon\op{Hom}_\CC(V_\rho,V_\sigma)$ that satisfies \eqref{eq:desired-schur-vec-space}, we define a function $\varphi\colon G\times G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ by
+	\begin{equation}
+		\varphi(g_1,g_2)\coloneqq F\left(g_1g_2^{-1}\right). \label{eq:to-desired-schur-vec-space}
+	\end{equation}
+	Then $\varphi$ satisfies \eqref{eq:better-inv-in-almost-desired-schur-vec-space}, and thus it belongs to $F'_G$. Conversely, starting from $\varphi$ in $F'_G$, we define an $F\colon G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ by
+	\[F(g)\coloneqq\varphi(g,1).\]
+	Then $F$ satisfies \eqref{eq:desired-schur-vec-space}, and the $\varphi$ defined by \eqref{eq:to-desired-schur-vec-space} coincides with the one we started with. Thus, $F$ is isomorphic to $F'_G$.
+
+	For every $F\in F$, denote by $T_F$ the element of $\op{Hom}_{\CC[G]}(V_{\widehat\rho},V_{\widehat\sigma})$ defined by
+	\begin{equation}
+		(T_Ff)(g)\coloneqq\frac1n\sum_{r\in G}F\left(gr^{-1}\right)(f(r)). \label{eq:desired-schur-iso}
+	\end{equation}
+	Then the map $F\mapsto T_F$ is the desired isomorphism.
+\end{proof}
+\begin{corollary}
+	In the notation of \Cref{prop:homs-of-ind}, we have
+	\[\left(\op{Ind}^G_H,\op{Ind}^G_J\sigma\right)\le|J\backslash G/H|(\dim\rho)(\dim\sigma)\]
+	where $J\backslash G/H$ denotes the set of double classes of $G$ modulo $J$ and $H$.
+\end{corollary}
+
+The most interesting conclusion of \Cref{prop:homs-of-ind} arises in the special case where $H=J$ and $\rho=\sigma$. In this case $\op{Hom}_{\CC[G]}\left(\op{Ind}^G_HV_\rho,\op{Ind}^G_JV_\sigma\right)=\op{End}_{\CC[G]}(V_{\widehat\rho})$, the Schur algebra of $\widehat\rho$. The bijection between $F$ and this algebra established in \Cref{prop:homs-of-ind} turns $F$ into an algebra and the product between two elements $F_1$ and $F_2$ of $F$ is given by
+\begin{equation}
+	(F_1*F_2)(g)\coloneqq\frac1{[G:H]}\sum_{s\in G}F_1\left(gs^{-1}\right)F_2(s). \label{eq:better-schur-ind-mult}
+\end{equation}
+This can be easily verified from the basic relation $T_{F_1}T_{F_2}=T_{F_1*F_2}$ and the definition \eqref{eq:desired-schur-iso}.
 
 \section{The group \texorpdfstring{$\GL(2,K)$}{ GL(2,K)}}
 
