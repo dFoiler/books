@@ -130,6 +130,90 @@ The most interesting conclusion of \Cref{prop:homs-of-ind} arises in the special
 This can be easily verified from the basic relation $T_{F_1}T_{F_2}=T_{F_1*F_2}$ and the definition \eqref{eq:desired-schur-iso}.
 
 \section{The group \texorpdfstring{$\GL(2,K)$}{ GL(2,K)}}
+In this section, we fix our notation for the rest of these notes.
+
+Let $K$ be a finite field with $q$ elements and suppose $q>2$. We denote by $G$ the group $\op{GL}(2,K)$ of all $2\times2$ invertible matrices with entries in $K$. We further reserve some letters for distinguished subgroups of $G$ that will concern us in the sequel. The letter $B$ stands for the \textit{Borel} subgroup of $G$ consisting of all upper triangular matrices
+\[B\coloneqq\left\{\begin{bmatrix}
+	\alpha & \beta \\
+	0 & \delta
+\end{bmatrix}:\alpha,\delta\in K^\times,\beta\in K\right\}.\]
+Clearly $|B|=(q-1)^2q$. Straightforward calculations show that the matrix $w\coloneqq\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}$, together with the matrices $\begin{bmatrix}
+	1 & 0 \\
+	\gamma & 1
+\end{bmatrix}$, $\gamma\in K$, form a system of representatives for the left (and also for the right) classes of $G$ modulo $B$. Hence, $[G:B]=q+1$ and thus $|G|=(q-1)^2q(q+1)$. The idempotent matrix $w$ will play an important role in the sequel.
+
+Note $B$ is a solvable group. Indeed, $B$ contains the normal abelian subgroup
+\[U\coloneqq\left\{\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}:\beta\in K\right\}\]
+of all unipotent upper-triangular matrices. This group is isomorphic to the additive group $K^+$ of the field $K$. Indeed,
+\[\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	1 & \beta' \\
+	0 & 1
+\end{bmatrix}=\begin{bmatrix}
+	1 & \beta+\beta' \\
+	0 & 1
+\end{bmatrix}.\]
+We shall therefore sometimes identify an element $\beta$ of $K$ with the corresponding matrix of $U$. The quotient group $B/U$ is isomorphic to the \textit{Cartan} group
+\[D\coloneqq\left\{\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}:\alpha,\delta\in K^\times\right\}\]
+of all diagonal matrices. It is isomorphic to $K^\times\times K^\times$ and hence is abelian. Clearly, $U\cap D=1$ and $UD=B$. Hence, $B$ is the semi-direct product of $U$ by $D$. Simple calculation shows that $U$ is the commutator subgroup of $B$. (Here we are using the assumption $q>2$. In the case $q=2$, we have $B=U$ and $B^c=1$.) In particular, it follows that $B$ has exactly $(q-1)^2$ characters.
+
+Another important normal subgroup of $B$ is
+\[P\coloneqq\left\{\begin{bmatrix}
+	\alpha & \beta \\
+	0 & 1
+\end{bmatrix}:\alpha\in K^\times,\beta\in K\right\}\]
+of order $(q-1)q$ and of index $q-1$ in $B$. The center
+\[Z\coloneqq\left\{\begin{bmatrix}
+	\delta & 0 \\
+	0 & \delta
+\end{bmatrix}:\delta\in K^\times\right\}\]
+of $G$ is also contained in $B$. Clearly $Z\cap P=1$ and $ZP=B$; i.e., $B$ is the semi-direct product of $Z$ and $P$.
+
+Note that $U$ is contained in $P$. In fact, $U$ is also the commutator subgroup of $P$. A complement of $U$ in $P$ is the group
+\[A\coloneqq\left\{\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}:\alpha\in K^\times\right\},\]
+which is canonically isomorphic to $K^\times$. Thus, $P$ is the semi-direct product of $U$ by $A$. The action of $A$ on $U$ by conjugation corresponds to the action of $K^\times$ on $K^+$ by multiplication
+\[\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	\alpha^{-1} & 0 \\
+	0 & 1
+\end{bmatrix}=\begin{bmatrix}
+	1 & \alpha\beta \\
+	0 & 1
+\end{bmatrix}.\]
+
+Our method of constructing the representations of $G$ consists of three stages: First of all we use general principles and easily determine the representations of $P$. Then we make a jump to $B$ and induce characters from $B$ to $G$. The last and most difficult stage is to explore those representations of $G$ that do not appear in the former stage. In doing this we shall use the \textit{Bruhat decomposition} of $G$, namely $G=B\sqcup BwU$. Indeed, if $\gamma\ne0$, then
+\[\begin{bmatrix}
+	\alpha & \beta \\
+	\gamma & \delta
+\end{bmatrix}=\begin{bmatrix}
+	\beta-\alpha\gamma^{-1}\delta & \alpha \\
+	0 & \gamma
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}\begin{bmatrix}
+	1 & \gamma^{-1}\delta \\
+	0 & 1
+\end{bmatrix}.\]
 
 \section{The conjugacy classes of \texorpdfstring{$\GL(2,K)$}{ GL(2,K)}}
 

@@ -438,3 +438,6 @@ Maschke
 subrepresentations
 isotypical
 decompositions
+unipotent
+Cartan
+Bruhat
