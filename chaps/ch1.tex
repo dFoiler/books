@@ -216,5 +216,51 @@ Our method of constructing the representations of $G$ consists of three stages: 
 \end{bmatrix}.\]
 
 \section{The conjugacy classes of \texorpdfstring{$\GL(2,K)$}{ GL(2,K)}}
+Before we start to investigate the irreducible representations of $G$, we would like to compute their number. It is equal to the number of the conjugacy classes of $G$. The computation of this number will be done by explicitly giving a representative for each of the conjugacy classes. This will also help us later to give the \textit{character table} of $G$, i.e., the values of the irreducible higher-dimensional characters at the conjugacy classes.
+
+An element $g$ of $G$ has two eigenvalues. If one of them belongs to $K$, then so does the other, since they both the same quadratic equation, $\deg(g-XI)=0$ over $K$. All the elements in the conjugacy class of $G$ have the same eigenvalues. There are therefore two possibilities.
+\begin{listalph}
+	\item The eigenvalues of $g$ belong to $K$.
+
+	In this case, $g$ is conjugate over $K$ to a unique matrix in a canonical Jordan form. If both eigenvalues are equal to the same element $\alpha$ of $K$, then the Jordan form is
+	\[c_1(\alpha)\coloneqq\begin{bmatrix}
+		\alpha & 0 \\
+		0 & \alpha
+	\end{bmatrix}\qquad\text{or}\qquad c_2(\alpha)\coloneqq\begin{cases}
+		\alpha & 1 \\
+		0 & \alpha
+	\end{cases},\]
+	depending on whether the minimal polynomial of $g$ is different from the characteristic polynomial or equal to it. If the eigenvalues are $\alpha,\beta$ and $\alpha\ne\beta$, then the Jordan form is
+	\[c_3(\alpha,\beta)\coloneqq\begin{cases}
+		\alpha & 0 \\
+		0 & \beta
+	\end{cases}.\]
+	There are $q-1$ matrices of the form $c_1(\alpha)$, $q-1$ of the form $c_2(\alpha)$, and $\frac12(q-1)(q-2)$ of the form $c_3(\alpha,\beta)$.
+
+	\item The eigenvalues of $g$ do not belong to $K$.
+
+	In this case, they belong the unique quadratic extension $L$ of $K$. Denote by $p(X)$ the characteristic polynomial of $g$. Then $p(X)$ is irreducible over $K$, and its roots $\alpha,\overline\alpha$, which are the eigenvalues of $g$, are conjugate over $K$. They are distinct, since $K$ as a finite field is perfect. If we denote $\op{Tr}(\alpha)\coloneqq\alpha+\overline\alpha$ and $\op N(\alpha)\coloneqq\alpha\overline\alpha$, then $p(X)=X^2-\op{Tr}(\alpha)X+\op N(\alpha)$.
+
+	Let $v$ be a nonzero vector in $K^2$. Then $v,gv$ form a basis for $K^2$ over $K$, since otherwise there would exist a $\lambda\in K$ such that $gv=\lambda v$. This $\lambda$ would then be an eigenvalue, contrary to our hypothesis. Recalling that $p(g)=0$ (by the Cayley--Hamilton theorem), we have that the matrix of $g$, when considered as a linear operator on $K^2$ with respect to the basis $v,gv$ is
+	\[c_4(\alpha)\coloneqq\begin{bmatrix}
+		0 & -\op N(\alpha) \\
+		1 & \op{Tr}(\alpha)
+	\end{bmatrix}.\]
+	Thus, $g$ is conjugate in $G$ to $c_4(\alpha)$.
+
+	Conversely, given an $\alpha\in L\setminus K$, then $c_4(\alpha)$ is a matrix in $G$ with the eigenvalues $\alpha,\overline\alpha$. If $\beta$ is an additional element of $L\setminus K$, then $c_4(\alpha)$ is conjugate to $c_4(\beta)$ if and only if $\beta=\alpha$ or $\beta=\overline\alpha$, since then $p(\beta)=0$.
+
+	There are $q^2-q$ elements in $L\setminus K$. Hence, there are $\frac12\left(q^2-q\right)$ matrices of the form $c_4(\alpha)$.
+\end{listalph}
+We sum up our results in the following.
+\begin{proposition}
+	The conjugacy classes of $G$ are classified in four families.
+	\begin{listalph}
+		\item $q-1$ classes, represented by $c_1(\alpha)$, with equal eigenvalues in $K$ such that the characteristic polynomial is different from the minimal polynomial;
+		\item $q-1$ classes, represented by $c_2(\alpha)$, with equal eigenvalues in $K$ such that the characteristic polynomial is equal to the minimal polynomial;
+		\item $\frac12(q-1)(q-2)$ classes, represented by $c_3(\alpha,\beta)$, with distinct eigenvalues in $K$;
+		\item $\frac12\left(q^2-q\right)$ classes, represented by $c_4(\alpha)$, with eigenvalues in $L\setminus K$.
+	\end{listalph}
+\end{proposition}
 
 \end{document}
