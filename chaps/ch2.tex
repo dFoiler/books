@@ -4,9 +4,129 @@
 
 \begin{document}
 
+This chapter starts with the representations of $P$, then investigates the behavior of representations of $G$ that are induced from characters of $B$, and finally describes the cuspidal representations of $G$, i.e., those representations that do not appear as components of the induced ones. The chapter ends with Weil's reciprocity law.
+
 \section{The representations of \texorpdfstring{$P$}{ P}}
+We use the method of ``small groups'' of Wigner in order to determine the representations of $P$.\todo{}
+
+First, we fix for the rest of these notes a non-unit character $\psi$ of $K^+$. We consider it also as a character of $U$. For every $a\in A$, we define a character $\psi_a$ of $U$ by
+\begin{equation}
+	\psi_a(u)\coloneqq\psi\left(aua^{-1}\right),\qquad\text{for }u\in U. \label{eq:def-psi-a}
+\end{equation}
+If $a\ne a'$, then $\psi_a\ne\psi_{a'}$. Indeed, if
+\[a\coloneqq\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix},\qquad a'\coloneqq\begin{bmatrix}
+	\alpha' & 0 \\
+	0 & 1
+\end{bmatrix},\qquad\text{and}\qquad u\coloneqq\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix},\]
+then $\psi_a(u)=\psi(\alpha\beta)$, and $\psi_a=\psi_{a'}$ implies that $\psi((\alpha-\alpha')\beta)=0$ for all $\beta\in K$; hence $\alpha=\alpha'$; hence $a=a'$. We thus get $q-1$ distinct representatives of $U$. These, together with the unit representation of $U$, are all the characters of $U$ since $\left|U\right|=q$.
+
+Every character $\chi$ of $A$ can be lifted to a character $\widetilde\chi$ of $P$ defined by $\widetilde\chi(ua)\coloneqq\chi(a)$. The $q-1$ distinct characters $\widetilde\chi$ of $P$ obtained in this way are all the characters of $P$ since $\left[P:P^c\right]=[P:U]=q-1$.
+
+In order to find the higher-dimensional representations of $P$, we induce $\psi$ from $U$ to $P$ and claim
+\begin{equation}
+	\op{Res}^P_U\op{Ind}^P_U\psi\stackrel?=\bigoplus_{a\in A}\psi_a. \label{eq:res-ind-psi}
+\end{equation}
+Indeed, for every $a\in A$, we define a function $f_a\in\op{Ind}^P_UV_\psi$ by
+\[f_a(a')\coloneqq\begin{cases}
+	1 & \text{if }a=a', \\
+	0 & \text{if }a\ne a',
+\end{cases}\qquad\text{where }a'\in A.\]
+Then $f_a$ is an eigenvector of $U$ that belongs to the eigenvalue $\psi_a$. In order to prove this claim, we have to show that $f_a(pu)=\psi_a(u)f_a(p)$ for every $p\in P$ and every $u\in U$. Writing $p=u'a'$ with $u'\in U$ and $a'\in A$ and using the identity $f_a(u'p')=\psi(u')f_a(p')$ for $p'\in P$, we see that it suffices to show that
+\begin{equation}
+	f_a(a'u)\stackrel?=\psi_a(u)f_a(a'). \label{eq:almost-f-a-eigenvector}
+\end{equation}
+Indeed,
+\[f_a(a'u)=f_a\left(a'u(a')^{-1}a'\right)=\psi\left(a'u(a')^{-1}\right)f_a(a')=\psi_{a'}(u)f_a(a').\]
+The right-hand side is equal to zero if $a\ne a'$ and equal to $\psi_a(u)f_a(a')$ if $a=a'$; hence, \eqref{eq:almost-f-a-eigenvector} is true in both cases. Thus, the vector $f_a$ generates the one-dimensional space $V_{\psi_a}$.
+
+If we let $a$ vary, we get $q-1$ linearly independent vectors $f_a$ of the $(q-1)$-dimensional vector space $\op{Ind}^P_UV_\psi$. Hence, $\op{Res}^P_U\op{Ind}^P_UV_\psi=\bigoplus_{a\in A}V_{\psi_a}$ as $U$-modules. This proves \eqref{eq:res-ind-psi}.
+
+As a consequence of \eqref{eq:res-ind-psi}, we prove the following fundamental theorem.
+\begin{theorem} \label{thm:reps-of-p}
+	The group $P$ has $q$ irreducible representations.
+	\begin{listalph}
+		\item $(q-1)$ of them are one-dimensional; they are the lifting of the characters of $A$;
+		\item one $(q-1)$-dimensional representation which is $\pi\coloneqq\op{Ind}^P_U\psi$.
+	\end{listalph}
+\end{theorem}
+\begin{proof}
+	We only have to prove (b). First, note that $\dim\op{Ind}^P_U\psi=[P:U]=q-1$. Second, by the Frobenius reciprocity theorem and by \eqref{eq:res-ind-psi},
+	\[\left(\op{Ind}^P_U\psi,\op{Ind}^P_U\psi\right)_P=\left(\psi,\bigoplus_{a\in A}\psi_a\right)=1;\]
+	hence $\op{Ind}^P_U\psi$ is an irreducible character of $P$.
+
+	In order to prove that there is no additional representation of $P$, one can observe that
+	\[\sum_{a\in A}(\dim\psi_a)^2+\left(\dim\op{Ind}^P_U\psi\right)^2=(q-1)+(q-1)^2=\left|P\right|.\]
+
+	We would however also like to prove the last assertion without using the finiteness of $G$. In order to do this, note first that one can in fact replace $\psi$ in \eqref{eq:res-ind-psi} by $\psi_{a'}$ and have
+	\begin{equation}
+		\op{Res}^P_U\op{Ind}^P_U\psi_{a'}=\bigoplus_{a\in A}\psi_{a}. \label{eq:res-ind-psi-a}
+	\end{equation}
+	Hence, we can prove, as before, that $\op{Ind}^P_U\psi_{a'}$ is an irreducible representation of $P$. Further, by \eqref{eq:res-ind-psi-a},
+	\[\left(\op{Ind}^P_U\psi,\op{Ind}^P_U\psi_{a'}\right)=\left(\psi,\bigoplus_{a\in A}\psi_a\right)=1.\]
+	Hence,
+	\begin{equation}
+		\op{Ind}^P_U\psi=\op{Ind}^P_U\psi_{a'}. \label{eq:ind-psi-is-ind-psi-a}
+	\end{equation}
+	Now, let $\sigma$ be an arbitrary irreducible representation of $P$ and consider $\op{Res}^P_U\sigma$. If there exists an $a'\in A$ such that $\psi_{a'}$ appears in $\op{Res}^P_U\sigma$, then by \eqref{eq:ind-psi-is-ind-psi-a},
+	\[\left(\sigma,\op{Ind}^P_U\right)=\left(\op{Res}^P_U\sigma,\psi_{a'}\right)>0.\]
+	Hence, $\sigma=\op{Ind}^P_U\psi$ because both representations are irreducible. Otherwise, $\op{Res}^P_U\sigma$ is a multiple of the unit character of $U$; i.e., $\sigma(u)v=v$ for every $v\in V_\sigma$. Consider therefore $\op{Res}^P_AV_\sigma$. It decomposes into linear $A$-subspaces because $A$ is abelian. In particular, there exists a nonzero vector $v\in V_\sigma$ and a character of $A$, say $\chi$, such that $\sigma(a)v=\chi(a)v$ for every $a\in A$. Hence, if $u\in U$, then $\sigma(au)v=\chi(a)v$. It follows that $\sigma=\widetilde\chi$.
+\end{proof}
+\begin{remark}
+	Note that we have also proved that our description of the representations of $P$ is independent of the choice of $\psi$.
+\end{remark}
+\begin{remark}
+	The distinguished representation $\pi=\op{Ind}^P_U\psi$ will play an important rule in the sequel. This is the reason for reserving the letter $\pi$ for it.
+\end{remark}
 
 \section{The representations of \texorpdfstring{$B$}{ B}}
+We have already that the commutator of $B$ is $U$ (see \cref{sec:gl-2-k-struct}). Moreover, $B$ is the semi-direct product of $D$ and $U$. The group $D$ is canonically isomorphic to $K^\times\times K^\times$. Hence, every pair $(\mu_1,\mu_2)$ of characters of $K^\times$ defines a unique character $\mu$ of $B$ which is given by the formula
+\begin{equation}
+	\mu\left(\begin{bmatrix}
+		\alpha & \beta \\
+		0 & \delta
+	\end{bmatrix}\right) \coloneqq\mu_1(\alpha)\mu_2(\beta),\qquad\alpha,\delta\in K^\times. \label{eq:def-char-on-b}
+\end{equation}
+Conversely, to every character $\mu$ of $B$, there corresponds a pair of characters $(\mu_1,\mu_2)$ of $K^\times$ such that \eqref{eq:def-char-on-b} holds. Thus, the $(q-1)^2$ characters of $B$ given by \eqref{eq:def-char-on-b} are all the characters of $B$.
+
+An easy computation shows that the normalizer of $D$ in $G$ is generated by $D$ and $w$.\footnote{This needs $q>2$.} Indeed, we have
+\[w\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}w^{-1}=\begin{bmatrix}
+	\delta & 0 \\
+	0 & \alpha
+\end{bmatrix}.\]
+For every character $\mu$ of $B$ given by \eqref{eq:def-char-on-b}, we define a character $\mu_w$ of $B$ by
+\[\mu_w\left(\begin{bmatrix}
+	\alpha & \beta \\
+	0 & \delta
+\end{bmatrix}\right)\coloneqq\mu_2(\delta)\mu_2(\alpha).\]
+Then $\mu_w(d)=\mu\left(wdw^{-1}\right)$ for every $d\in D$, and
+\[\mu_w=\mu\iff\mu_1=\mu_2.\]
+In order to find the higher-dimensional representations of $B$, recall that $B$ is also the semi-direct product of $Z$ by $P$. The abelian group $Z$ has $q-1$ characters $\chi$. Each of them can be extended to a character $\widetilde\chi$ of $B$ by
+\[\widetilde\chi(zp)\coloneqq\chi(z)\qquad\text{for }z\in Z,p\in P.\]
+Also, composing the canonical map $B\to P$ with kernel $Z$, with the representation $\pi$ of $B$ (see \Cref{thm:reps-of-p}), we get an irreducible representation $\widetilde\pi$ of $B$ of dimension $q-1$:
+\[\widetilde\pi(zp)\coloneqq\pi(p)\qquad\text{for }z\in Z,p\in P.\]
+The tensor product
+\begin{equation}
+	(\widetilde\chi\otimes\widetilde\pi)(zp)\coloneqq\chi(z)\pi(p),\qquad\text{for }z\in Z,p\in P \label{eq:twist-pi-to-b}
+\end{equation}
+is an irreducible $(q-1)$-dimensional representation of $B$ whose restriction to $Z$ is $\chi$. Varying $\chi$ on all characters of $Z$, we get $q-1$ different $(q-1)$-dimensional representations of $B$. These, together with the $(q-1)^2$ characters of $B$, are all the irreducible representations of $B$ because
+\[(q-1)^2+(q-1)(q-1)^2=q(q-1)^2=\left|B\right|.\]
+We have therefore proved the following theorem.
+\begin{theorem}
+	The group $B$ has the following irreducible representations.
+	\begin{listalph}
+		\item $(q-1)^2$ characters by \eqref{eq:def-char-on-b}.
+		\item $(q-1)$ different $(q-1)$-dimensional representations given by \eqref{eq:twist-pi-to-b}.
+	\end{listalph}
+\end{theorem}
 
 \section{Inducing characters from \texorpdfstring{$B$}{ B} to \texorpdfstring{$G$}{ G}}
 
