@@ -183,3 +183,6 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qfor a cuspidal \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThis decomposition of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is unique, up to the order of the summands.\\E$"}
 {"rule":"FIRST_OF_ALL","sentence":"^\\QOur method of constructing the representations of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q consists of three stages: First of all we use general principles and easily determine the representations of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qto non-decomposable characters.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QPv.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qand \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q This completes the proof.\\E$"}

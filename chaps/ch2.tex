@@ -129,8 +129,210 @@ We have therefore proved the following theorem.
 \end{theorem}
 
 \section{Inducing characters from \texorpdfstring{$B$}{ B} to \texorpdfstring{$G$}{ G}}
+As a first step toward the determination of the irreducible representations of $G$, we investigate those that appear as components of $\op{Ind}^G_B\mu$, where $\mu$ is a character of $B$. In order to shorten the notation, we make the convention
+\[\widehat\mu\coloneqq\op{Ind}^G_B\mu\]
+and stick to it for the rest of these notes. The dimension of $\widehat\mu$ is $q+1$. Our task in this section is to determine the connection between $\mu$ and $\widehat\mu$.
+
+In order to do this, we have the following definition.
+\begin{definition}[Jacquet module]
+	We define the \textit{Jacquet module} of a representation $\rho$ of $G$ as
+	\[J(V_\rho)\coloneqq\{v\in V_\rho:\rho(u)v=v\text{ for every }u\in U\}.\]
+\end{definition}
+The fact that $U$ is normal in $B$ implies that $B$ acts on $J(V_\rho)$. Indeed, if $v\in J(V_\rho)$, $b\in B$, and $u\in U$, then $b^{-1}ub\in U$; hence
+\[\rho(u)\rho(b)v=\rho(b)\rho\left(b^{-1}ub\right)v=\rho(b)v.\]
+It might happen however that $J(V_\rho)$ is not a $G$-invariant subspace.
+
+If $\rho_1$ and $\rho_2$ are two representations of $\rho$, then clearly
+\[J\left(V_{\rho_1}\oplus V_{\rho_2}\right)=J\left(V_{\rho_1}\right)\oplus J\left(V_{\rho_2}\right).\]
+In particular, we have the following lemma.
+\begin{lemma} \label{lem:jac-of-mu-hat}
+	If $\mu$ is a character of $B$, then $\dim J(V_{\widehat\mu})=2$.
+\end{lemma}
+\begin{proof}
+	By definition, $J(V_{\widehat\mu})$ contains all functions $f\colon G\to\CC$ that satisfy
+	\[f(bg)=\mu(B)f(g)\qquad\text{and}\qquad f(bu)=f(b)\]
+	for all $b\in B$, $g\in G$, and $u\in U$. In particular,
+	\[f(b)=\mu(b)f(1)\qquad\text{and}\qquad f(bwu)=\mu(b)f(w).\]
+	Using the Bruhat decomposition $G=B\sqcup BwU$, this implies that $f$ is determined by its values in $1$ and in $w$. It follows that $\dim J(V_{\widehat\mu})=2$, and a canonical basis for $J(V_{\widehat\mu})$ is the two functions $f_1$ and $f_2$ satisfying
+	\begin{equation}
+		\left\{\begin{array}{c}
+			f_1(1)=1, \\
+			f_1(w)=0,
+		\end{array}\right.\qquad\text{and}\qquad\left\{\begin{array}{c}
+			f_2(1)=0, \\
+			f_2(w)=1.
+		\end{array}\right. \label{eq:jac-of-mu-hat-basis}
+	\end{equation}
+	This completes the proof.
+\end{proof}
+A supplement to \Cref{lem:jac-of-mu-hat} is the following.
+\begin{lemma} \label{lem:eigens-of-jac-mu-hat}
+	If $\mu$ is a character of $B$, then $B$ operating on $J(\mu_{\widehat\mu})$ has two eigenvectors $f_1$ and $f_2$ (defined by \eqref{eq:jac-of-mu-hat-basis}) that correspond to the eigenvalues $\mu$ and $\mu_w$, respectively. In detail,
+	\begin{equation}
+		\widehat\mu(b)f_1=\mu(b)f_1\qquad\text{and}\qquad\widehat\mu(b)f_2=\mu_w(b)f_2 \label{eq:desired-eigen-of-jac-mu-hat}
+	\end{equation}
+	for every $b\in B$.
+\end{lemma}
+\begin{proof}
+	We have only to prove that both sides of the equalities \eqref{eq:desired-eigen-of-jac-mu-hat} coincide in $1$ and in $w$.
+
+	Indeed, for $f_1$, we have $\left(\widehat\mu(b)f_1\right)(1)=f_1(b)=\mu(b)f_1(1)$. Also, by the Bruhat decomposition, there exists for every $b\in B$ elements $b_1\in B$ and $u\in U$ such that $wb=b_1wu$. Hence,
+	\[\left(\widehat\mu(b)f_1\right)(w)=f_1(wb)=f_1(b_1wu)=\mu(b_1)f_1(w)=0=\mu(b)f_1(w).\]
+	For $f_2$, we have
+	\[\left(\widehat\mu(b)f_2\right)(1)=f_2(b)=\mu(b)f_2(1)=0=\mu_w(b)f_2(1).\]
+	A difficulty arises in calculating $\left(\widehat\mu(b)f_2\right)(w)$. We overcome this by first considering $d\in D$. Then
+	\begin{equation}
+		\left(\widehat\mu(d)f_2\right)(w)=f_2(wd)=f_2(wdww)=\mu(wdw)f_2(w)=\mu_w(d)f_2(w). \label{eq:desired-eigen-of-jac-mu-hat-d}
+	\end{equation}
+	In general, we know from \Cref{lem:jac-of-mu-hat} that $f_1$ and $f_2$ generate $J(V_{\widehat\mu})$. Hence, for every $b\in B$, there exist $\alpha_1(b),\alpha_2(b)\in\CC$ such that
+	\begin{equation}
+		\widehat\mu(b)f_2=\alpha_1(b)f_1+\alpha_2(b)f_2. \label{eq:decompose-b-f2}
+	\end{equation}
+	Calculating both sides of \eqref{eq:decompose-b-f2} at $1$, we obtain $\alpha_1(b)=0$; hence, $\widehat\mu(b)f_2=\alpha_2(b)f_2$. It follows that $\alpha_2(b_1b_2)=\alpha_2(b_1)\alpha_2(b_2)$ for $b_2,b_2\in B$; i.e., $\alpha-2$ is a character of $B$. Hence, if
+	\[b\coloneqq\begin{bmatrix}
+		\alpha & \beta \\
+		0 & \delta
+	\end{bmatrix}\qquad\text{and}\qquad d\coloneqq\begin{bmatrix}
+		\alpha & 0 \\
+		0 & \delta
+	\end{bmatrix},\]
+	then
+	\[\left(\widehat\mu(b)f_2\right)(w)=\alpha_2(b)f_2(w)=\alpha_2(d)f_2(w)=\left(\widehat\mu(d)f_2\right)(w)=\mu_w(d)f_2(w)=\mu_w(b)f_2(w),\]
+	which completes the proof.
+\end{proof}
+The importance of the Jacquet modules for our investigation lies in the following lemma.
+\begin{lemma} \label{lem:use-of-jac}
+	Let $\rho$ be a representation of $G$. Then $J(V_\rho)\ne0$ if and only if there exists character $\mu$ of $B$ such that $\left(\rho,\widehat\mu\right)\ne0$.
+\end{lemma}
+\begin{proof}
+	Suppose $J(V_\rho)\ne0$. Then $J(V_\rho)$ can be considered as a nontrivial $B/U$-space via $\rho$. But $B/U$ is abelian; hence $J(V_\rho)$ splits into a direct sum of one-dimensional $B/U$-subspaces. It follows that there exists a character $\mu$ of $B$ and a nonzero element $v\in J(V_\rho)$ such that $\rho(b)v=\mu(b)v$ for every $b\in B$. Hence, $\left(\op{Res}^G_B\rho,\mu\right)\ne0$. By the Frobenius reciprocity theorem, $(\rho,\widehat\mu)\ne0$, and half of the lemma is thus proved.
+
+	Now, suppose that $(\rho,\widehat\mu)\ne0$. Then arguing backwards we find that there exists a nonzero element $v\in V_\rho$ such that $\rho(b)v=\mu(b)v$ for every $b\in B$. Now, $\mu$ is trivial on $U$ because $U$ is the commutator of $B$. Hence, $v\in J(V_\rho)$, which is therefore not zero.
+\end{proof}
+\begin{corollary} \label{cor:irred-use-of-jac}
+	Let $\rho$ be an irreducible representation of $G$. Then $J(V_\rho)\ne0$ if and only if there exists a character $\mu$ of $B$ such that $\rho\le\widehat\mu$.
+\end{corollary}
+\begin{proof}
+	Immediate from \Cref{lem:use-of-jac}.
+\end{proof}
+\begin{corollary} \label{cor:mu-hat-decomp}
+	If $\mu$ is a character of $B$, then $\widehat\mu$ has at most two irreducible components.
+\end{corollary}
+\begin{proof}
+	Let $\widehat\mu=\rho_1\oplus\cdots\oplus\rho_r$ be a decomposition of $\widehat\mu$ into irreducible components. Then
+	\[J(V_{\widehat\mu})=J\left(V_{\rho_1}\right)\oplus\cdots\oplus J\left(V_{\rho_r}\right).\]
+	By \Cref{cor:irred-use-of-jac}, $J\left(V_{\rho_i}\right)\ne0$ for $i=1,\ldots,r$. Hence, the dimension of the right-hand side is $\ge r$. On the other hand, $\dim J\left(V_{\widehat\mu}\right)=2$ by \Cref{lem:jac-of-mu-hat}. Hence, $r\le2$.
+\end{proof}
+The next few lemmas give the exact information about the possible two components of $\widehat\mu$.
+\begin{lemma} \label{lem:to-reducible}
+	If $\mu$ is a character of $B$ and $\mu=\mu_w$, then $\widehat\mu$ has a one-dimensional component.
+\end{lemma}
+\begin{proof}
+	The assumption implies that $\mu$ corresponds to a pair $(\mu_1,\mu_1)$ of characters $K^\times$; i.e., if
+	\[b\coloneqq\begin{bmatrix}
+		\alpha & \beta \\
+		0 & \delta
+	\end{bmatrix},\]
+	then $\mu(b)=\mu_1(\alpha)\mu_1(\delta)$. It follows that $\mu(b)=\mu_2(\det b)$. Now, define a function $f\colon G\to\CC$ by $f(g)\coloneqq\mu_1(\deg g)$. Then $f(bg)=\mu(b)f(g)$, that is, $f$ belongs to $V_{\widehat\mu}$. Moreover,
+	\[\left(\widehat\mu(s)f\right)(g)=f(gs)=\mu_1(\det s)f(g)\]
+	for $s,g\in G$. It follows that $f$ is an eigenvector of $G$ that belongs to the eigenvalue $\mu_1\circ\det$.
+\end{proof}
+\begin{lemma}
+	If $\mu$ is a character of $B$, then $\widehat\mu$ has at most one one-dimensional component.
+\end{lemma}
+\begin{proof}
+	Assume that $\widehat\mu$ has two distinct one-dimensional components, $\chi_1$ and $\chi_2$. Then by \Cref{cor:mu-hat-decomp} they are all the components of $\widehat\mu$; i.e., $\widehat\mu=\chi_1\oplus\chi_2$. It follows that $q+1=\dim\widehat\mu=2$, which is a contradiction.
+\end{proof}
+\begin{lemma} \label{lem:decomp-res-mu-hat}
+	If $\mu$ is a character of $B$, then
+	\[\op{Res}_PV_{\widehat\mu}=\op{Res}_PJ(V_{\widehat\mu})\oplus V_\pi.\]
+\end{lemma}
+\begin{proof}
+	Note $J(V_{\widehat\mu})$ is a two-dimensional $B$-subspace of $V_{\widehat\mu}$; in particular, $J(V_{\widehat\mu})$ is a $P$-subspace of $V_{\widehat\mu}$. Let $V$ be a $P$-complement to $J(V_{\widehat\mu})$ in $V_{\widehat\mu}$. Then $\dim V=q-1$. Further, $V$ has no one-dimensional $P$-subspace; indeed otherwise, there would exist a nonzero element $v\in V$ and a character $\chi$ of $P$ such that $\widehat\mu(p)v=\chi(p)v$ for every $p\in P$. In particular, we would have for $u\in U$ that $\widehat\mu(u)v=v$ since $U=P'$. It follows that $v\in J\left(V_{\widehat\mu}\right)$; hence $v=0$, which is a contradiction. Therefore, by \Cref{thm:reps-of-p}, $V$ cannot have irreducible $P$-subspaces of dimension less than $q-1$. Hence, $V$ is irreducible and isomorphic to the unique $P$-representation $V_\pi$ of dimension $q-1$.
+\end{proof}
+\begin{lemma} \label{lem:mu-hat-red}
+	If $\mu$ is a character of $B$ and $\widehat\mu$ is reducible, then the following are true.
+	\begin{listalph}
+		\item $\widehat\mu$ has a one-dimensional component.
+		\item $\mu=\mu_w$.
+	\end{listalph}
+\end{lemma}
+\begin{proof}
+	Here we go.
+	\begin{listalph}
+		\item Let $V_{\widehat\mu}=V\oplus V'$ be a nontrivial $G$-decomposition of $V$. By \Cref{lem:decomp-res-mu-hat}, we can assume, without loss of generality, that $V_\pi\cap V\ne0$. Then $V_\pi\subseteq V$ because $V_\pi$ is an irreducible $P$-representation. On the other hand, by \Cref{lem:use-of-jac}, $J(V)\subseteq J(V_{\widehat\mu})\cap V$ is nonempty, so $V$ is not an irreducible $P$-representation. Hence, $V_\pi\ne V$. It follows that $\dim V=q$ and hence $\dim V'=1$.
+		\item We have proved that there exists a character $\chi$ of $G$ and a nonzero function $f\colon G\to\CC$ such that
+		\[f(bg)=\mu(b)f(g)\qquad\text{and}\qquad f(gs)=\chi(s)f(g)\]
+		for every $b\in B$ and $g,s\in G$.
+		
+		We claim $f(1)\ne0$. Indeed, assume that $f(1)=0$ and let $g\in G$. Then there exists a positive integer $n$ such that $g^n=1$. Hence,
+		\[0=f(1)=f\left(g\cdot g^{n-1}\right)=\chi\left(g^{n-1}\right)f(g).\]
+		It follows that $f(g)=0$ because $\chi\left(g^{n-1}\right)\ne0$. This is a contradiction.
+
+		Now, let $d\in D$; then $\mu(d)f(q)=f(d)=\chi(d)f(1)$. Hence, $\mu(d)=\chi(d)$. It follows that
+		\[\mu_w(d)=\mu(wdw)=\chi(wdw)=\chi\left(w^2\right)\chi(d)=\mu(d).\]
+		Hence, $\mu_w=\mu$.
+		\qedhere
+	\end{listalph}
+\end{proof}
+\begin{lemma} \label{lem:mu-hat-interference}
+	Let $\mu$ and $\mu'$ be two distinct characters of $B$. Then $\left(\widehat\mu,\widehat\mu'\right)\ne0$ if and only if $\mu'=\mu_w$.
+\end{lemma}
+\begin{proof}
+	Suppose first that $\left(\widehat\mu,\widehat\mu'\right)\ne0$. Then there exists an irreducible representation $\rho$ of $G$ such that $\rho\le\widehat\mu$ and $\rho\le\widehat\mu'$. It follows from \Cref{cor:irred-use-of-jac} that $J(V_\rho)\ne0$. By the proof of \Cref{lem:use-of-jac}, we know that $B$ operating on $J(V_\rho)$ has an eigenvalue $\chi$. In addition, by \Cref{lem:eigens-of-jac-mu-hat}, we know that $B$ operating on $J(V_{\widehat\mu})$ has exactly two eigenvalues $\mu$ and $\mu_w$. It follows that $\chi=\mu$ or $\chi=\mu_w$ because $J(V_\rho)\subseteq J(V_{\widehat\mu})$. Similarly, $\chi=\mu'$ or $\chi=\mu'_w$, but $\mu\ne\mu'$; hence, $\mu=\mu_w$.
+
+	Conversely, suppose that $\mu'=\mu_w$. Then arguing backwards we have that $\left(\mu',\op{Res}^G_B\widehat\mu\right)\ne0$. Hence, by the Frobenius reciprocity theorem $\left(\widehat\mu',\widehat\mu\right)\ne0$.
+\end{proof}
+\begin{lemma} \label{lem:mu-hat-interference-full}
+	Let $\mu$ and $\mu'$ be two distinct characters of $B$. Then $\widehat\mu=\widehat\mu'$ if and only if $\mu'=\mu_w$.
+\end{lemma}
+\begin{proof}
+	Suppose that $\mu'=\mu_w$. Then $\mu\ne\mu_w$ and $\mu'=\mu'_w$. It follows that $\widehat\mu$ and $\widehat\mu'$ are irreducible by \Cref{lem:mu-hat-red}. Also, $\left(\widehat\mu,\widehat\mu'\right)\ne0$ by \Cref{lem:mu-hat-interference}. Hence, $\widehat\mu=\widehat\mu'$.
+
+	The other direction of the lemma follows directly from \Cref{lem:mu-hat-interference}.
+\end{proof}
+Summing up the lemmas in this section, we obtain the theorem.
+\begin{theorem} \label{thm:fully-decompose-mu-hat}
+	Let $\mu$ and $\mu'$ be characters of $B$ and let $\widehat\mu\coloneqq\op{Ind}^G_B\mu$ and $\widehat\mu'\coloneqq\op{Ind}^G_B\mu'$.
+	\begin{listalph}
+		\item $\dim\widehat\mu=q+1$.
+		\item $\widehat\mu$ has at most two irreducible components.
+		\item $\widehat\mu$ is irreducible if and only if $\mu\ne\mu_w$.
+		\item If $\widehat\mu$ is reducible, it decomposes into a direct sum of a one-dimensional and $q$-dimensional representation.
+		\item $\widehat\mu'=\widehat\mu$ if and only if $\mu'=\mu$ or $\mu'=\mu_w$.
+	\end{listalph}
+\end{theorem}
+\begin{proof}
+	Note (a) is clear. \Cref{cor:mu-hat-decomp} gives (b). \Cref{lem:to-reducible,lem:mu-hat-red} give (c). \Cref{lem:to-reducible} and (b) give (d). Lastly, \Cref{lem:mu-hat-interference-full} gives (e).
+\end{proof}
+
+Now, consider a character $\mu$ of $B$ that corresponds to the pair of characters $(\mu_1,\mu_2)$ of $K^\times$. There are two possibilities.
+\begin{listalph}
+	\item $\mu=\mu_w$; i.e., $\mu_1=\mu_2$. In this case, $\widehat\mu$ is the direct sum of a one-dimensional representation $\rho'_{(\mu_1,\mu_2)}$ and an irreducible $q$-dimensional representation $\rho_{(\mu_1,\mu_2)}$. $K^\times$ has $q-1$ characters; hence, in this way we obtain $q-1$ characters of $G$ and $q-1$ different $q$-dimensional irreducible representations of $G$.
+	\item $\mu\ne\mu_w$; i.e., $\mu_1\ne\mu_2$. In this case, $\widehat\mu$ is an irreducible representation of dimension $q+1$, and we denote it by $\rho_{(\mu_1,\mu_2)}$. The number of these $\mu$ is equal to the number of characters of $B$, i.e., $(q-1)^2$, minus the characters of type (a), i.e. $q-1$. Further, $\mu$ and $\mu_w$ induce the same representation. Hence, in this way we obtain $\frac12(q-1)(q-2)$ irreducible representations of $G$ of dimension $q-1$.
+\end{listalph}
+We have therefore proved the following theorem.
+\begin{theorem} \label{thm:non-cusp-reps}
+	The irreducible representations of $G$, which are components of induced representations of the form $\op{Ind}^G_B\mu$ where $\mu$ is a character of $B$, split up in the following classes.
+	\begin{listalph}
+		\item $q-1$ different $1$-dimensional representations $\rho'_{(\mu_1,\mu_1)}$.
+		\item $q-1$ different $q$-dimensional representations $\rho_{(\mu_1,\mu_2)}$.
+		\item $\frac12(q-1)(q-2)$ distinct $(q+1)$-dimensional representations, $\rho_{(\mu_1,\mu_2)}$.
+	\end{listalph}
+\end{theorem}
+If $\chi$ is a character of $G$, then $\chi$ is a component of $\op{Ind}^G_B\op{Res}^G_B\chi$. It follows by \Cref{thm:non-cusp-reps} that $G$ has exactly $q-1$ characters. Hence, $[G:G^c]=q-1$. The subgroup $\op{SL}(2,K)=\{g\in G:\deg g=1\}$ is normal and $G/\op{SL}(2,K)\cong K^\times$. Hence, we have the following corollary.
+\begin{corollary}
+	$\op{SL}(2,K)$ is the commutator subgroup of $\op{GL}(2,K)$.
+\end{corollary}
 
 \section{The Schur algebra of \texorpdfstring{$\op{Ind}^G_B\mu$}{ Ind mu}}
+Let $\mu$ be a character of $B$, and let $\widehat\mu\coloneqq\op{Ind}^G_B\mu$. Bruhat's decomposition of $G$ implies that $\left|B\backslash G/B\right|=2$. Hence, by \Cref{cor:dim-homs-of-ind}, $\left(\widehat\mu,\widehat\mu\right)\le2$. Because $\left(\widehat\mu,\widehat\mu\right)\ge1$, there are only two possibilities: either $\left(\widehat\mu,\widehat\mu\right)=1$, in which case $\widehat\mu$ is irreducible; or $\left(\widehat\mu,\widehat\mu\right)=2$. We also know that if $\widehat\mu=\bigoplus_{i=1}^rn_ip_i$ is the canonical decomposition of $\widehat\mu$, then
+\[\left(\widehat\mu,\widehat\mu\right)=\sum_{i=1}^rn_i^2.\]
+Because $2$ can be decomposed into a sum of squares only in the form $2=1^2+1^2$, it follows that $\left(\widehat\mu,\widehat\mu\right)=2$ implies that $\widehat\mu$ decomposes into a direct sum of two non-isomorphic representations. We have therefore proved the following theorem.
+\begin{theorem} \label{thm:mu-hat-decomposition}
+	Let $\mu$ be a character of $B$ and let $\widehat\mu\coloneqq\op{Ind}^G_B\mu$. Then either $\left(\widehat\mu,\widehat\mu\right)=1$, in which case $\widehat\mu$ is irreducible, or $\left(\widehat\mu,\widehat\mu\right)=2$, in which case $\widehat\mu$ decomposes into a direct sum of two non-isomorphic representations.
+\end{theorem}
+Obviously, \Cref{thm:mu-hat-decomposition} is also a consequence of \Cref{thm:fully-decompose-mu-hat}. However, the proof given above is independent of \Cref{thm:fully-decompose-mu-hat}.
 
 \section{The dimension of cuspidal representations}
 
@@ -138,7 +340,7 @@ We have therefore proved the following theorem.
 
 \section{Non-decomposable characters of \texorpdfstring{$L^\times$}{ L*}}
 
-\section{Assigning cuspidal representations to non-decomposable characters}
+\section{Assigning cuspidal reps. to non-decomposable characters}
 
 \section{The correspondence between \texorpdfstring{$\nu$}{ v} and \texorpdfstring{$P_\nu$}{ Pv}}
 

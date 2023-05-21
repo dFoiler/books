@@ -117,12 +117,11 @@ where $\widetilde\chi_\tau$ is the function on $G$ that vanishes outside $H$ and
 	\end{equation}
 	Then the map $F\mapsto T_F$ is the desired isomorphism.
 \end{proof}
-\begin{corollary}
+\begin{corollary} \label{cor:dim-homs-of-ind}
 	In the notation of \Cref{prop:homs-of-ind}, we have
 	\[\left(\op{Ind}^G_H,\op{Ind}^G_J\sigma\right)\le|J\backslash G/H|(\dim\rho)(\dim\sigma)\]
 	where $J\backslash G/H$ denotes the set of double classes of $G$ modulo $J$ and $H$.
 \end{corollary}
-
 The most interesting conclusion of \Cref{prop:homs-of-ind} arises in the special case where $H=J$ and $\rho=\sigma$. In this case $\op{Hom}_{\CC[G]}\left(\op{Ind}^G_HV_\rho,\op{Ind}^G_JV_\sigma\right)=\op{End}_{\CC[G]}(V_{\widehat\rho})$, the Schur algebra of $\widehat\rho$. The bijection between $F$ and this algebra established in \Cref{prop:homs-of-ind} turns $F$ into an algebra and the product between two elements $F_1$ and $F_2$ of $F$ is given by
 \begin{equation}
 	(F_1*F_2)(g)\coloneqq\frac1{[G:H]}\sum_{s\in G}F_1\left(gs^{-1}\right)F_2(s). \label{eq:better-schur-ind-mult}
@@ -226,15 +225,15 @@ An element $g$ of $G$ has two eigenvalues. If one of them belongs to $K$, then s
 	\[c_1(\alpha)\coloneqq\begin{bmatrix}
 		\alpha & 0 \\
 		0 & \alpha
-	\end{bmatrix}\qquad\text{or}\qquad c_2(\alpha)\coloneqq\begin{cases}
+	\end{bmatrix}\qquad\text{or}\qquad c_2(\alpha)\coloneqq\begin{bmatrix}
 		\alpha & 1 \\
 		0 & \alpha
-	\end{cases},\]
+	\end{bmatrix},\]
 	depending on whether the minimal polynomial of $g$ is different from the characteristic polynomial or equal to it. If the eigenvalues are $\alpha,\beta$ and $\alpha\ne\beta$, then the Jordan form is
-	\[c_3(\alpha,\beta)\coloneqq\begin{cases}
+	\[c_3(\alpha,\beta)\coloneqq\begin{bmatrix}
 		\alpha & 0 \\
 		0 & \beta
-	\end{cases}.\]
+	\end{bmatrix}.\]
 	There are $q-1$ matrices of the form $c_1(\alpha)$, $q-1$ of the form $c_2(\alpha)$, and $\frac12(q-1)(q-2)$ of the form $c_3(\alpha,\beta)$.
 
 	\item The eigenvalues of $g$ do not belong to $K$.
