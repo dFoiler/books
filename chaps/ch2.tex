@@ -335,8 +335,163 @@ Because $2$ can be decomposed into a sum of squares only in the form $2=1^2+1^2$
 Obviously, \Cref{thm:mu-hat-decomposition} is also a consequence of \Cref{thm:fully-decompose-mu-hat}. However, the proof given above is independent of \Cref{thm:fully-decompose-mu-hat}.
 
 \section{The dimension of cuspidal representations}
+Irreducible representations of $G$ that are not components of $\widehat\mu$, with $\mu$ a character of $B$, are said to be \textit{cuspidal}. By \Cref{cor:irred-use-of-jac}, an irreducible representation $\rho$ of $G$ is cuspidal if and only if $J(V_\rho)=0$. Comparing \Cref{prop:conj-classes-of-g} with \Cref{thm:non-cusp-reps}, we find that $G$ has $\frac12\left(q^2-q\right)$ cuspidal representations, exactly the same as the number of conjugacy classes of the form $c_4(\alpha)$.
+
+We delay a further explanation of this phenomenon to \cref{sec:weil-group} and concentrate in this section on proving that all cuspidal representations have dimension $q-1$. The first toward this goal is as follows.
+\begin{lemma} \label{lem:almost-cuspidal-dim}
+	Let $\rho$ be a cuspidal representation of $G$. Then $\op{Res}^G_P\rho=r\pi$ for some positive integer $r$. In particular, $\dim\rho=r(q-1)$ is a multiple of $q-1$.
+\end{lemma}
+\begin{proof}
+	The $P$-representation $\op{Res}^G_PV_\rho$ cannot have one-dimensional components. Indeed, otherwise, there would exist a nonzero vector $v\in V_\rho$ and a character $\chi$ of $P$ such that $\rho(p)v=\chi(p)v$ for every $p\in P$. In particular, we would have $\rho(u)v=v$ for every $u\in U$; i.e., $v\in J(V_\rho)$; thus, $J(V_\rho)\ne0$, contrary to the assumption that $\rho$ is cuspidal (see also the proof of \Cref{lem:decomp-res-mu-hat}). By \Cref{thm:reps-of-p}, $\op{Res}^G_P\rho$ must be a multiple of $\pi$.
+\end{proof}
+\begin{proposition} \label{prop:cuspidal-dim}
+	The following are true.
+	\begin{listalph}
+		\item Let $\rho$ be a cuspidal representation. Then $\op{Res}^G_P\rho=\pi$ and $\dim\rho=q+1$.
+		\item Conversely, if $\rho$ is a representation of $G$ such that $\op{Res}^G_P\rho=\pi$, then $\rho$ is cuspidal.
+	\end{listalph}
+\end{proposition}
+\begin{proof}
+	Here we go.
+	\begin{listalph}
+		\item Using the formula $\left|G\right|=\sum_\sigma(\dim\sigma)^2$ where $\sigma$ runs over the irreducible representations of $G$, and by \Cref{thm:non-cusp-reps}, we have
+		\[(q-1)^2q(q+1)\ge(q-1)\cdot1^2+(q-1)\cdot q^2+\frac12(q-1)(q-2)\cdot(q+1)^2+\sum_{\sigma\text{ cuspidal}}(\dim\sigma)^2.\]
+		By \Cref{lem:almost-cuspidal-dim}, there exists for every $\sigma$ a positive integer $r(\sigma)$ such that $\dim\sigma=(q-1)r(\sigma)$. Hence,
+		\[\frac12\left(q^2-q\right)\ge\sum_{\sigma\text{ cuspidal}}r(\sigma).\]
+		The number of the summands on the right-hand side is equal to $\frac12\left(q^2-q\right)$. Hence, $r(\sigma)=1$, and (a) follows from \Cref{lem:almost-cuspidal-dim}.
+		\item The representation $\pi$ is irreducible; hence $\rho$ is irreducible too. Also, if $\mu$ is a character of $B$, then by \Cref{thm:non-cusp-reps}, the components of $\widehat\mu$ have the dimensions $1$, $q$, or $q=1$. However, $\dim\rho=\dim\pi=q-1$; hence, $\rho$ is not equal to any of them (i.e., $\rho$ is cuspidal).
+		\qedhere
+	\end{listalph}
+\end{proof}
+The proof of \Cref{prop:cuspidal-dim}(a) relies heavily on the fact that $K$ is a finite field. We now give another proof that will be independent of this fact.
+
+Let $\widehat\pi\coloneqq\op{Ind}^G_B=\op{Ind}^G_U\psi$. Then by \Cref{prop:homs-of-ind}, $\op{End}_{\CC[G]}V_{\widehat\pi}$ is isomorphic to the algebra $A$ of all functions $F\colon G\to\CC$ satisfying
+\[F(u_1gu_2)=\psi(u_1u_2)F(g)\qquad\text{for }u_1,u_2\in U\text{ and }g\in G,\]
+where multiplication between two functions $F_1,F_2\in A$ is given by the formula
+\[(F_1*F_2)(g)=\frac1{[G:U]}\sum_{s\in G}F_1\left(gs^{-1}\right)F_2(s)\]
+(see \eqref{eq:desired-schur-iso}). We will show that $A$ is abelian. This implies that $\widehat\pi$ has no multiple components (see \cref{sec:intro-line-reps}). If $\rho$ is a cuspidal representation, then by \Cref{lem:almost-cuspidal-dim} there exists a positive integer $r$ such that $\left(\op{Res}^G_P\rho,\pi\right)=r$ and $\dim\rho=r(q-1)$. Hence, by the Frobenius reciprocity theorem, $r=(\rho,\widehat\pi)=1$, and our contention is proved.
+
+Our method of proving that $A$ is abelian is indirect. We shall define an involution on $A$; i.e., a map $F\mapsto F'$ such that $(F_1*F_2)'=F_2'*F_1'$. We further prove that $F=F'$ for every $F\in A$. Hence, $F_1*F_2=F_2*F_1$.
+
+We start by defining an involution $g\mapsto g'$ on $G$: if $g=\begin{bmatrix}
+	\alpha & \beta \\
+	\gamma & \delta
+\end{bmatrix}$, we let $g'\coloneqq\begin{bmatrix}
+	\delta & \beta \\
+	\gamma & \alpha
+\end{bmatrix}$. Then $(g_1g_2)'=g_2'g_1'$, $g''=g$, and $g=g'$ if $g$ is symmetric with respect to the second diagonal. In particular, $u'=u$ for every $u\in U$. We continue by defining for an element $F\in A$ a function $F'\colon G\to\CC$ by $F'(g)\coloneqq F(g')$. Then $F'$ belongs to $A$. In order prove that $F=F'$, it suffices to show that $F$ and $F'$ coincide on representatives of the double classes $U\backslash G/U$. Indeed, by Bruhat's decomposition $G=B\sqcup BwU$ and because $B=UD$, we have that the above representations are either of the form
+\[\text{(a) }\begin{bmatrix}
+	0 & \beta \\
+	\gamma & 0
+\end{bmatrix},\qquad\text{or of the form (b) }\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}.\]
+Clearly, $F$ and $F'$ coincide on the matrices (a) and on the matrices (b) in case $\alpha=\delta$. In order to prove that $F$ and $F'$ coincide also on the matrices (b) in case $\alpha\ne\delta$, it suffices to show that $F$ (and hence also $F'$) vanishes on them. Indeed, acting with $F$ on both sides of the identity
+\[\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}=\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}\begin{bmatrix}
+	1 & \alpha^{-1}\delta\beta \\
+	0 & 1
+\end{bmatrix},\]
+we have
+\[\psi(\beta)F\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}\right)=F\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}\right)\psi\left(\alpha^{-1}\delta\beta\right).\]
+If $F\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & \delta
+\end{bmatrix}\right)\ne0$, then $\psi(\beta)=\psi\left(\alpha^{-1}\delta\beta\right)$; hence, $\psi\left(\beta\left(1-\alpha^{-1}\delta\right)\right)=1$ for every $\beta\in K$. It follows that $\psi$ is the unit character of $K^+$, which is a contradiction.
+
+This completes the alternative proof of \Cref{prop:cuspidal-dim}(a). Note that we have actually also proved the following proposition.
+\begin{proposition}
+	The representation $\op{Ind}^G_U\psi$ has no multiple components.
+\end{proposition}
 
 \section{The description of \texorpdfstring{$\GL(2,K)$}{ GL(2,K)} by generators and relations}
+We need this for an explicit description of the cuspidal representations. Let
+\[w'\coloneqq\begin{bmatrix}
+	0 & 1 \\
+	-1 & 0
+\end{bmatrix},\qquad z\coloneqq\begin{bmatrix}
+	1 & 1 \\
+	0 & 1
+\end{bmatrix},\qquad\text{and}\qquad s\coloneqq w'z.\]
+Then we have the following relations between $w'$ and the elements of $B$:
+\begin{align}
+	w'\begin{bmatrix}
+		\alpha & 0 \\
+		0 & \delta
+	\end{bmatrix}(w')^{-1} &= \begin{bmatrix}
+		\beta & 0 \\
+		0 & \alpha
+	\end{bmatrix}, \label{eq:wp-diag-relation} \\
+	(w')^2 &= \begin{bmatrix}
+		-1 & 0 \\
+		0 & -1
+	\end{bmatrix} \label{eq:wp2-relation} \\
+	s^3 &= 1. \label{eq:s3-relation}
+\end{align}
+\begin{proposition}
+	The group $\op{GL}(2,K)$ is the free group generated by $B$ and $w'$ with \eqref{eq:wp-diag-relation}, \eqref{eq:wp2-relation}, and \eqref{eq:s3-relation} as the defining relations.
+\end{proposition}
+\begin{proof}
+	Denote by $G$ the free group generated by $B$ and $w'$ with the above defining relations. Then there exists a unique epimorphism $\theta$ of $G$ onto $\op{GL}(2,K)$ which is the identity on $B$ and maps $w'$ onto itself. We have to prove that its kernel consists of $1$.
+
+	We claim that for every $b\in B\setminus D$, there exists $b_1,b_2\in B$ such that $w'bw'=b_1w'b_2$. Indeed, if
+	\[b\coloneqq\begin{bmatrix}
+		\alpha & \beta \\
+		0 & \delta
+	\end{bmatrix}\]
+	and $\beta\ne0$, then
+	\[b=\begin{bmatrix}
+		1 & 0 \\
+		0 & \delta\beta^{-1}
+	\end{bmatrix}\begin{bmatrix}
+		1 & 1 \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		\alpha & 0 \\
+		0 & \delta
+	\end{bmatrix}=d'zd'';\]
+	also $w'zw'zw'z=1$ by \eqref{eq:s3-relation}; hence,
+	\[w'zw'=z^{-1}(w')^{-1}z^{-1}=z^{-1}\begin{bmatrix}
+		-1 & 0\\
+		0 & -1
+	\end{bmatrix}w'z^{-1}\]
+	by \eqref{eq:wp2-relation}. It follows that
+	\[w'bw'=\left(w'd'(w')^{-1}\right)w'zw'\left((w')^{-1}d''w'\right)=\left(w'd'(w')^{-1}\right)z^{-1}\begin{bmatrix}
+		-1 & 0 \\
+		0 & -1
+	\end{bmatrix}w'z^{-1}\left((w')^{-1}d''w'\right)=b_1w'b_2,\]
+	by \eqref{eq:wp-diag-relation}. This completes the proof of the claim.
+
+	Next, note that if $d\in D$, then $w'dw'=\left(w'd(w')^{-1}\right)(w')^2\in B$ by \eqref{eq:wp-diag-relation} and \eqref{eq:wp2-relation}. Now, let $g\ne1$ be in the kernel of $\theta$. Then $g\notin B$; hence, $g$ can be written, for example, as $g=b_0w'b_1\cdots w'b_r$, where $b_i\in B$. If $r\ge2$, then either $w'b_1w'=b_1'\in B$, if $b_1\in D$, or $w'b_1w'=b_1'w'b_2'$ with $b_1',b_2'\in D$ if $b_1\in B\setminus D$. In any case one can rewrite $g$ as $g=b_2''w'\ldots w'b_r$. By a repeated application of this procedure, one finally proves that $g\in Bw'B$; i.e.,
+	\[g=\begin{bmatrix}
+		\alpha' & \beta' \\
+		0 & \delta'
+	\end{bmatrix}w'\begin{bmatrix}
+		\alpha & \beta \\
+		0 & \delta
+	\end{bmatrix}.\]
+	The right-hand side is mapped by $\theta$ to an element
+	\[\begin{bmatrix}
+		* & * \\
+		-\delta'\alpha & *
+	\end{bmatrix}\]
+	of $\op{GL}(2,K)$. But $g$ is mapped to $1$. Hence, $\delta'\alpha=0$, which is a contradiction.
+\end{proof}
 
 \section{Non-decomposable characters of \texorpdfstring{$L^\times$}{ L*}}
 
@@ -344,6 +499,6 @@ Obviously, \Cref{thm:mu-hat-decomposition} is also a consequence of \Cref{thm:fu
 
 \section{The correspondence between \texorpdfstring{$\nu$}{ v} and \texorpdfstring{$P_\nu$}{ Pv}}
 
-\section{The small Weil group and the small reciprocity law}
+\section{The small Weil group and the small reciprocity law} \label{sec:weil-group}
 
 \end{document}

@@ -68,7 +68,7 @@ where $\widetilde\chi_\tau$ is the function on $G$ that vanishes outside $H$ and
 
 \section{The Schur algebra}
 \begin{proposition} \label{prop:homs-of-ind}
-	Let $H$ and $J$ be subgroups of a finite group $G$. Let $\rho$ and $\sigma$ be representations of $H$ and $J$, respectively. Then $\op{Hom}_{\CC[G]}\left(\op{Ind}^G_HV_\rho,\op{Ind}^G_JV_\sigma\right)$ is isomorphic to the vector space of all functions $F\colon G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ satisfying
+	Let $H$ and $J$ be subgroups of a finite group $G$. Let $\rho$ and $\sigma$ be representations of $H$ and $J$, respectively. Then $\op{Hom}_{\CC[G]}\left(\op{Ind}^G_HV_\rho,\op{Ind}^G_JV_\sigma\right)$ is isomorphic to the vector space $\mc F$ of all functions $F\colon G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ satisfying
 	\begin{equation}
 		F(jgh)=\sigma(j)\circ F(g)\circ\rho(h) \label{eq:desired-schur-vec-space}
 	\end{equation}
@@ -85,7 +85,7 @@ where $\widetilde\chi_\tau$ is the function on $G$ that vanishes outside $H$ and
 	\begin{equation}
 		(T_\varphi f)(g)\coloneqq\frac1n\sum_{r\in G}\varphi(g,r)(f(r)); \label{eq:define-desired-schur-iso}
 	\end{equation}
-	clearly, the map $\varphi\mapsto T_\varphi$ is a homomorphism $F'\to\op{Hom}_\CC(V_{\widehat\rho},V_{\widehat\sigma})$. It is injective. Indeed, suppose that $T_\varphi=0$. Let $s\in G$, let $v\in V_\rho$, and define a function $f_{sb}\in V_{\widehat\rho}$ by
+	clearly, the map $\varphi\mapsto T_\varphi$ is a homomorphism $F'\to\op{Hom}_\CC(V_{\widehat\rho},V_{\widehat\sigma})$. It is injective. Indeed, suppose that $T_\varphi=0$. Let $s\in G$, let $v\in V_\rho$, and define a function $f_{sv}\in V_{\widehat\rho}$ by
 	\[f_{sv}(g)\coloneqq\begin{cases}
 		\rho(h)v & \text{if }g=hs, \\
 		0 & \text{if }g\notin Hs.
@@ -103,15 +103,15 @@ where $\widetilde\chi_\tau$ is the function on $G$ that vanishes outside $H$ and
 		\varphi\left(g,rx^{-1}\right)=\varphi(gx,r)\qquad\text{for all }g,r,x\in G. \label{eq:better-inv-in-almost-desired-schur-vec-space}
 	\end{equation}
 
-	For every function $F\colon\op{Hom}_\CC(V_\rho,V_\sigma)$ that satisfies \eqref{eq:desired-schur-vec-space}, we define a function $\varphi\colon G\times G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ by
+	For every function $F\colon G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ that satisfies \eqref{eq:desired-schur-vec-space}, we define a function $\varphi\colon G\times G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ by
 	\begin{equation}
 		\varphi(g_1,g_2)\coloneqq F\left(g_1g_2^{-1}\right). \label{eq:to-desired-schur-vec-space}
 	\end{equation}
 	Then $\varphi$ satisfies \eqref{eq:better-inv-in-almost-desired-schur-vec-space}, and thus it belongs to $F'_G$. Conversely, starting from $\varphi$ in $F'_G$, we define an $F\colon G\to\op{Hom}_\CC(V_\rho,V_\sigma)$ by
 	\[F(g)\coloneqq\varphi(g,1).\]
-	Then $F$ satisfies \eqref{eq:desired-schur-vec-space}, and the $\varphi$ defined by \eqref{eq:to-desired-schur-vec-space} coincides with the one we started with. Thus, $F$ is isomorphic to $F'_G$.
+	Then $F$ satisfies \eqref{eq:desired-schur-vec-space}, and the $\varphi$ defined by \eqref{eq:to-desired-schur-vec-space} coincides with the one we started with. Thus, $\mc F$ is isomorphic to $F'_G$.
 
-	For every $F\in F$, denote by $T_F$ the element of $\op{Hom}_{\CC[G]}(V_{\widehat\rho},V_{\widehat\sigma})$ defined by
+	For every $F\in\mc F$, denote by $T_F$ the element of $\op{Hom}_{\CC[G]}(V_{\widehat\rho},V_{\widehat\sigma})$ defined by
 	\begin{equation}
 		(T_Ff)(g)\coloneqq\frac1n\sum_{r\in G}F\left(gr^{-1}\right)(f(r)). \label{eq:desired-schur-iso}
 	\end{equation}
@@ -252,7 +252,7 @@ An element $g$ of $G$ has two eigenvalues. If one of them belongs to $K$, then s
 	There are $q^2-q$ elements in $L\setminus K$. Hence, there are $\frac12\left(q^2-q\right)$ matrices of the form $c_4(\alpha)$.
 \end{listalph}
 We sum up our results in the following.
-\begin{proposition}
+\begin{proposition} \label{prop:conj-classes-of-g}
 	The conjugacy classes of $G$ are classified in four families.
 	\begin{listalph}
 		\item $q-1$ classes, represented by $c_1(\alpha)$, with equal eigenvalues in $K$ such that the characteristic polynomial is different from the minimal polynomial;
