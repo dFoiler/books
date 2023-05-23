@@ -186,3 +186,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qto non-decomposable characters.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QPv.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qand \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q This completes the proof.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qpv.\\E$"}
