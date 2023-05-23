@@ -187,3 +187,12 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QPv.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qand \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q This completes the proof.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qpv.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qof \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q irr.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qrepr.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qof \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q dim.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qof repr.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qof repr.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qof \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q irr.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qno. of elements\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qno. of elements \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qclasses chars.\\E$"}

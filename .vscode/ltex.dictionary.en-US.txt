@@ -443,3 +443,5 @@ Cartan
 Bruhat
 Jacquet
 summands
+bijectively
+Piatetski-Shapiro

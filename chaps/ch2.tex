@@ -7,7 +7,7 @@
 This chapter starts with the representations of $P$, then investigates the behavior of representations of $G$ that are induced from characters of $B$, and finally describes the cuspidal representations of $G$, i.e., those representations that do not appear as components of the induced ones. The chapter ends with Weil's reciprocity law.
 
 \section{The representations of \texorpdfstring{$P$}{ P}}
-We use the method of ``small groups'' of Wigner in order to determine the representations of $P$.\todo{}
+We use the method of ``small groups'' of Wigner in order to determine the representations of $P$.%\todo{}
 
 First, we fix for the rest of these notes a non-unit character $\psi$ of $K^+$. We consider it also as a character of $U$. For every $a\in A$, we define a character $\psi_a$ of $U$ by
 \begin{equation}
@@ -550,7 +550,7 @@ We shall need the analogue to \Cref{lem:n-epi} for the trace function $\op{Tr}\c
 	This follows from \Cref{lem:tr-epi}.
 \end{proof}
 
-\section{Assigning cuspidal reps. to non-decomposable characters}
+\section{Assigning cuspidal reps. to non-decomposable characters} \label{sec:def-cusp}
 Let $\nu$ be a non-decomposable character. We are going to define a representation $\rho=\rho_\nu$ of $G$ that will turn out to be a cuspidal representation. In order to define $\rho$ on $G$, it suffices by \Cref{prop:gl-by-relations} to define $\rho$ as a map from $B\cup\{w'\}$ into the automorphism group of an appropriate vector space $B$ such that the restriction of $\rho$ to $B$ is a homomorphism and such that $\rho$ preserves the relation \eqref{eq:wp-diag-relation}, \eqref{eq:wp2-relation}, and \eqref{eq:s3-relation}. The dimension of $\rho$ should be $q-1$ by \Cref{prop:cuspidal-dim}. Hence, it is convenient to take $V$ as the vector space of all functions $K^\times\to\CC$.
 
 The definition of $\op{Res}^G_P\rho$ is motivated by the fact proved in \Cref{prop:cuspidal-dim} that it should be equal to $\pi$. Identifying the subgroup $A$ of $P$ with $K^\times$ and using the identity
@@ -584,7 +584,9 @@ It follows that we must define $\rho$ on $B$ by
 A straightforward calculation shows that $\rho$ is indeed a homomorphism of $B$ into $\op{Aut}V$.
 
 In order to define $\rho(w')$, we define a function $j\colon K^\times\to\CC$ by
-\[j(u)\coloneqq\frac1q\sum_{\substack{\op Nt=u\\t\in L^\times}}\psi\left(t+\overline t\right)\nu(t)\]
+\begin{equation}
+	j(u)\coloneqq\frac1q\sum_{\substack{\op Nt=u\\t\in L^\times}}\psi\left(t+\overline t\right)\nu(t) \label{eq:def-cusp-j}
+\end{equation}
 and prove that it satisfies the following two identities.
 \begin{lemma} \label{lem:j1}
 	For $u\in K^\times$,
@@ -751,7 +753,160 @@ where
 \[k(y,x;g)\coloneqq\frac1q\psi\left(\frac{\alpha y+\delta x}\gamma\right)\sum_{\substack{u\overline u=yx^{-1}\det g\\u\in L^\times}}\psi\left(-\frac x\gamma(u+\overline u)\right)\nu(u).\]
 
 \section{The correspondence between \texorpdfstring{$\nu$}{ v} and \texorpdfstring{$\rho_\nu$}{ pv}}
+\begin{proposition} \label{prop:cusp-reps}
+	The following are true.
+	\begin{listalph}
+		\item If $\nu$ is a non-decomposable character of $L^\times$, then the representation $\rho_\nu$ of $G$ defined in \cref{sec:def-cusp} is cuspidal.
+		\item If $\nu$ and $\nu'$ are non-decomposable character of $L^\times$, then $\rho_\nu$ is isomorphic to $\rho_{\nu'}$ if and only if $\nu$ is conjugate to $\nu'$ over $K$.
+	\end{listalph}
+\end{proposition}
+\begin{proof}
+	Here we go.
+	\begin{listalph}
+		\item We have defined $\rho_\nu$ such that its restriction to $P$ is equal to $\pi$.\footnote{By definition, $\op{Res}^G_U\rho_\nu=\psi$, so $\left(\op{Res}^G_P\rho_\nu,\pi\right)=\left(\op{Res}^G_P\rho_\nu,\op{Ind}_U^P\psi\right)=\left(\op{Res}^G_U\rho_\nu,\psi\right)=1$. But $\dim\op{Res}^G_P\rho_\nu=\dim\rho_\nu=q-1=\dim\pi$, so we have equality.} Hence, $\rho_\nu$ is cuspidal by \Cref{prop:cuspidal-dim}.
+		\item Let $\rho\coloneqq\rho_\nu$, $\rho'\coloneqq\rho_{\nu'}$, $j\coloneqq j_\nu$, and $j_{\nu'}\coloneqq j'$. If $\nu'$ is conjugate to $\nu$, then $j'$ is equal to $j$, as follows from definition \eqref{eq:def-cusp-j}. Hence, $\rho=\rho'$.
+
+		Conversely, suppose that $\rho'$ is isomorphic to $\rho$. Then there exists an automorphism $\theta$ of $V$ (which is the vector space of all functions $f\colon K^\times\to\CC$) such that
+		\begin{equation}
+			\rho'(g)=\theta\rho(g)\theta^{-1}\qquad\text{for all }g\in G. \label{eq:def-theta-aut}
+		\end{equation}
+		In particular, \eqref{eq:def-theta-aut} is valid for every $g\in P$. However, $\op{Res}^G_P\rho=\pi=\op{Res}^G_P\rho'$, and $\pi$ is irreducible. Hence, by Schur's lemma, $\theta$ is multiplication by a scalar. In particular, $\theta$ commutes with every automorphism of $V$. Hence, \eqref{eq:def-theta-aut} implies that $\rho'(g)=\rho(g)$ for every $g\in G$.
+
+		It follows that for every $\delta,y\in K^\times$ and $f\in V$,
+		\[\nu'(\delta)f\left(\delta^{-1}y\right)=\left(\rho'\left(\begin{bmatrix}
+			1 & 0 \\
+			0 & \delta
+		\end{bmatrix}\right)f\right)(y)=\left(\rho\left(\begin{bmatrix}
+			1 & 0 \\
+			0 & \delta
+		\end{bmatrix}\right)f\right)(y)=\nu(\delta)f\left(\delta^{-1}y\right).\]
+		Hence,
+		\begin{equation}
+			\nu'(\delta) = \nu(\delta) \qquad \text{for every }\delta\in K^\times. \label{eq:nup-eq-nu}
+		\end{equation}
+		Further, $\rho'(w')=\rho(w')$; hence,
+		\[\sum_{x\in K^\times}\nu'\left(x^{-1}\right)j(yx)f(x)=\sum_{x\in K^\times}\nu\left(x^{-1}\right)j'(yx)f(x)\]
+		for every $y\in K^\times$ and every $f\in V$. Using \eqref{eq:nup-eq-nu}, this implies that $j'(u)=j(u)$ for every $u\in K^\times$. This means that
+		\begin{equation}
+			\sum_{\op Nt=u}\psi\left(t+\overline t\right)\nu'(t)=\sum_{\op Nt=u}\psi\left(t+\overline t\right)\nu(t). \label{eq:eq-js}
+		\end{equation}
+		Let $\delta\in K^\times$ and replace the variable $t$ in \eqref{eq:eq-js} by $\delta t$. Using \eqref{eq:nup-eq-nu} to cancel $\nu(\delta)$ on both sides, we have
+		\[\sum_{t\overline t=v}\psi\left(\delta(t+\overline t)\right)\nu'(t)=\sum_{t\overline t=v}\psi\left(\delta(t+\overline t)\right)\nu(t)\]
+		for every $v,\delta\in K^\times$. This can be rewritten as
+		\begin{equation}
+			\sideset{}{'}\sum_{t\overline t=v}\left(\nu'(t)+\nu'(\overline t)-\nu(t)-\nu(\overline t)\right)\psi\left(\delta(t+\overline t)\right)=0, \label{eq:almost-full-nu-eq-nup}
+		\end{equation}
+		where the prime over the summation symbols indicates that for every $t\in L^\times$ such that $t\overline t=v$, only one pair out of the two $(t,\overline t),(\overline t,t)$ contributes a summand to the summation.
+
+		Now let $x$ be an element of $K$. Then there exists a $t\in L$ such that $t+\overline t=x$ and $t\overline t=v$. This element is a solution to the quadratic equation $X^2-xX+v=0$. (We repeat that $L$ is the unique quadratic extension of $K$.) The other solution of the equation is obviously $\overline t$. The expression $a_x\coloneqq\nu'(t)+\nu'(\overline t)-\nu(t)-\nu(\overline t)$ is therefore well-defined, and \eqref{eq:almost-full-nu-eq-nup} can be rewritten as
+		\[\sideset{}{'}\sum_{t\overline t=v}a_x\psi(\delta x)=0.\]
+		If $x_1\ne x_2$, then the characters $\delta\mapsto\psi(\delta x_1)$ and $\delta\mapsto\psi(\delta x_2)$ of $K^+$ are distinct. Hence, by Artin's lemma, $a_x=0$ for every $x\in K$. This means that
+		\[\nu'(t)+\nu'(\overline t)=\nu(t)+\nu(\overline t)\qquad\text{for all }t\in L^\times.\]
+		In addition,
+		\[\nu'(t)\nu'(\overline t)=\nu(t)\nu(\overline t)\qquad\text{for all }t\in L^\times\]
+		by \eqref{eq:nup-eq-nu}. Hence, the pairs $\left(\nu'(t),\nu'(\overline t)\right)$, $\left(\nu(t),\nu(\overline t)\right)$ are the solutions of the same quadratic equation over $K$. Hence,
+		\begin{equation}
+			\left\{\nu'(t),\nu'(\overline t)\right\}=\left\{\nu(t),\nu(\overline t)\right\}\qquad\text{for all }t\in L^\times. \label{eq:pair-nu-eq-pair-nup}
+		\end{equation}
+		In particular, \eqref{eq:pair-nu-eq-pair-nup} is true for a generator $t_0$ of the cyclic group $L^\times$. Suppose, for example, that $\nu(t_0)=\nu'(t_0)$. Then $\nu(t)=\nu'(t)$ for every $t\in L^\times$. If $\nu'(t_0)=\nu(\overline{t_0})$, then $\nu'=\overline\nu$.
+
+		We have therefore proved that $\nu'$ is conjugate to $\nu$ over $K$.
+		\qedhere
+	\end{listalph}
+\end{proof}
+
+At this point, we would like to indicate an interesting duality between conjugacy classes of $G$ on one hand and irreducible representations of $G$ on the other hand. The elements $\alpha$ of $K^\times$ correspond bijectively to the pair of conjugacy classes $(c_1(\alpha),c_2(\alpha))$ (see \cref{sec:gl-2-k-classes}), and there are $q-1$ of them. Dually, the characters $\mu_1$ of $K^\times$ correspond bijectively to pairs $\left(\rho_{(\mu_1,\mu_1)},\rho'_{(\mu_1,\mu_1)}\right)$ of irreducible representations of dimensions $q$ and $1$ respectively (see \Cref{thm:non-cusp-reps}), and there are $q-1$ of them. Further, the pairs of elements $\alpha,\beta$ of $K^\times$ with $\alpha\ne\beta$ correspond to the conjugacy classes $c_3(\alpha,\beta)$, and there are $\frac12(q-1)(q-2)$ of them. Dually, the pairs of characters $\mu_1,\mu_2$ of $K^\times$ with $\mu_1\ne\mu_2$ correspond to the irreducible representations $\rho_{(\mu_1,\mu_2)}$ of $G$ of dimension $q+1$, and there are also $\frac12(q-1)(q-2)$ of them. Finally, the elements $\lambda$ of $L^\times\setminus K^\times$ correspond to the conjugacy classes $c_4(\lambda)$, whereas the characters $\nu$ of $L^\times$ that do not come from characters of $K^\times$ (i.e., non-decomposable) correspond to the cuspidal representations $\rho_\nu$ of $G$. In both sets that are $\frac12\left(q^2-q\right)$ elements.
+
+We summarize these data in the following table.
+\[\begin{array}{c|c|c|c|c|c}
+	\text{elements of }L^\times & \text{conj. classes} & \text{chars. of }L^\times,K^\times & \text{irr. repr. of }G & \text{dim. of repr.} & \text{no. of elements} \\\hline\hline
+	\alpha \in K^\times & c_1(\alpha) & \mu_1\in X(K^\times) & \rho'_{(\mu_1,\mu_1)} & 1 & q-1 \\
+	& c_2(\alpha) & & \rho_{(\mu_1,\mu_1)} & q  & q-1 \\\hline
+	\alpha,\beta\in K^\times & c_3(\alpha,\beta) & \mu_1,\mu_2\in X\left(K^\times\right) & \rho_{(\mu_1,\mu_2)} & q+1 & \frac12(q-1)(q-2) \\
+	\alpha\ne\beta & & \mu_1\ne\mu_2 &&& \\\hline
+	\lambda\in L^\times\setminus K^\times & c_4(\lambda) & \nu\in X\left(L^\times\right)\setminus X\left(K^\times\right) & \rho_\nu & q-1 & \frac12\left(q^2-q\right)
+\end{array}\]
 
 \section{The small Weil group and the small reciprocity law} \label{sec:weil-group}
+Let $F/E$ be a finite Galois extension. Its Galois group, $\op{Gal}(F/E)$ acts on the multiplicative group $F^\times$ of $F$. Denote by $W(F/E)\coloneqq\op{Gal}(F/E)\ltimes F^\times$ the semi-direct product of $\op{Gal}(F/E)$ by $F^\times$. It consists of all pairs $(x,\sigma)$ where $x\in F^\times$ and $\sigma\in\op{Gal}(F/E)$. Multiplication is given by the formula
+\[(x,\sigma)\cdot(y,\tau)\coloneqq(x\cdot\sigma y,\sigma\tau);\]
+the one element is $(1,1)$, and the inverse is given by
+\[(x,\sigma)^{-1}\coloneqq\left(\sigma^{-1}x^{-1},\sigma^{-1}\right).\]
+The map $x\mapsto(x,1)$ is an embedding of $F^\times$ in $W(F/E)$. We identify $F^\times$ with its image. Then $F^\times$ is normal in $W(F/E)$ and its index is equal to the degree $[F:E]$.
+
+The group $W(F/E)$ is in general not abelian. A typical commutator is
+\[(x,\sigma)(y,\tau)(x,\sigma)^{-1}(y,\tau)^{-1}=\left(x\cdot\sigma(y)\cdot\sigma\tau\sigma^{-1}\left(x^{-1}\right)\cdot\sigma\tau\sigma^{-1}\tau^{-1}\left(y^{-1}\right),\sigma\tau\sigma^{-1}\tau^{-1}\right).\]
+If in addition $\op{Gal}(F/E)$ is abelian, then this formula simplifies to
+\begin{equation}
+	(x,\sigma)(y,\tau)(x,\sigma)^{-1}(y,\tau)^{-1}=\left(x\cdot\sigma(y)\cot\tau\left(x^{-1}\right)\cdot y,1\right). \label{eq:weil-commutator}
+\end{equation}
+
+We now restrict our attention to the case where $E=K$ is our field with $q$ elements and $F=L$ its unique quadratic extension. The Galois group $\op{Gal}(L/K)$ consists of two elements, a conjugation, the action of which is denoted by a bar, and the identity automorphism. In this case, $W(L/K)$ is called the small Weil group of the extension $L/K$. It is a finite group having $w(q-1)$ elements, and it can be described as the free group generated by $L^\times$ and with the relations
+\begin{equation}
+	\varphi^2=1\qquad\text{and}\qquad x\varphi=\varphi\overline x\text{ for }x\in L^\times. \label{eq:weil-relations}
+\end{equation}
+Now, $W(L/K)$ contains the abelian normal subgroup $L^\times$ of index $2$. Hence, its irreducible representations are of degree $\le2$.
+
+We would like to establish a correspondence between the two-dimensional representations of $W(L/K)$ (not only the irreducible ones) and the higher-dimensional representations of $G$. As a first step toward this goal, let us compute the number of characters of $W(L/K)$. This number is equal to the index of the commutator subgroup $W(L/K)^c$ of $W(L/K)$. Indeed, applying \eqref{eq:weil-commutator} to the four possible pairs $(\sigma,\tau)$, one concludes that
+\begin{equation}
+	W(L/K)^c=\left\{z\overline z:z\in L^\times\right\}. \label{eq:all-weil-commutators}
+\end{equation}
+By \Cref{cor:h90}, the right-hand side is equal to $\left\{x\in L^\times:\op Nx=1\right\}$; hence, $\left[W(L/K):W(L/K)^c\right]=2(q-1)$ by \Cref{lem:n-epi}. We have therefore proved the following.
+\begin{lemma}
+	The group $W(L/K)$ has $2(q-1)$ characters.
+\end{lemma}
+
+Consider now a two-dimensional representation $\tau$ of $W(L/K)$ its restriction to $L^\times$ decomposes into a direct sum of two characters. Let $\nu$ be one of them.
+\begin{lemma} \label{lem:res-weil-rep}
+	Fix everything as above.
+	\begin{listalph}
+		\item If $\nu$ is non-decomposable, then $\op{Res}_{L^\times}\tau=\nu\oplus\overline\nu$.
+		\item $\nu$ is non-decomposable if and only if $\tau$ is irreducible.
+	\end{listalph}
+\end{lemma}
+\begin{proof}
+	By construction, there exists a vector $0\ne v_1\in V_\tau$ such that
+	\begin{equation}
+		\tau(x)v_1=\nu(x)v_1\qquad\text{for all }x\in L^\times. \label{eq:eigen-of-tau}
+	\end{equation}
+	Let $v_1'\coloneqq\tau(\varphi)v_1$. Then the relation $x\varphi=\varphi\overline x$ implies
+	\begin{equation}
+		\tau(x)v_1'=\nu(\overline x)v_1'\qquad\text{for all }x\in L^\times. \label{eq:another-eigen-of-tau}
+	\end{equation}
+	Hence, $\overline\nu$ is also a component of $\op{Res}_{L^\times}\tau$. If $\nu\ne\overline\nu$, then $\op{Res}_{L^\times}\tau=\nu\oplus\overline\nu$, and (a) is proved.
+
+	In order to prove (b), suppose first that $\tau=\tau_1\oplus\tau_2$ is reducible. Then the $\tau_i$ are characters of $W(L/K)$ and since $x\overline x^{-1}\in W(L/K)^c$ by \eqref{eq:all-weil-commutators}, we have $\tau_i(x)=\tau_i(\overline x)$. It follows that $\op{Res}_{L^\times}\tau_i$ are decomposable characters of $L^\times$. Also, $\nu$ must be equal to one of them; hence, $\nu$ is also decomposable.
+
+	Conversely, suppose that $\nu=\overline\nu$. There are two possibilities. Either $\nu_1'=\nu(\varphi)v_1$ is a multiple of $v_1$, or $v_1$ and $v_1'$ are linearly independent. In the first case, $\nu\colon L^\times\cup\{\varphi\}\to\CC$ is a map which is multiplicative on $L^\times$ and agrees with the defining relations \eqref{eq:weil-relations} of $W(L/K)$. Hence, $\nu$ can be extended to a character of $W(L/K)$ that happens to be a component of $\tau$ by \eqref{eq:eigen-of-tau} and because $v_1'=\tau(\varphi)v_1$. This implies that $\tau$ is reducible.
+
+	In the second case, $v_1$ and $v_1'$ generate $V_\tau$. Then \eqref{eq:eigen-of-tau} and \eqref{eq:another-eigen-of-tau} imply that $\tau(x)v=\nu(x)v$ for every $x\in L^\times$ and $v\in V_\tau$. Let $\nu_2$ be an eigenvector of $\tau(\varphi)$. Then because $\tau(x)v_2=\nu(x)v_2$, we prove as above that $v_2$ is an eigenvector of $W(L/K)$. This implies that $\tau$ is reducible.
+\end{proof}
+
+Now consider more closely the case where $\tau=\tau_1\oplus\tau_2$ is a reducible representation of $W(L/K)$. By \Cref{lem:res-weil-rep}, there exist characters $\mu_1$ and $\mu_2$ of $K^\times$ such that $\tau_i(x)=\mu_i(\op Nx)$ for $i=1,2$ and for every $x\in L^\times$. We may therefore write $\tau=\tau_{(\mu_1,\mu_2)}$. The pair $(\mu_1,\mu_2)$ defines a character $\mu$ of $B$ (by \eqref{eq:def-char-on-b}). If $\mu_1=\mu_2$, then $\widehat\mu=\rho_{(\mu_1,\mu_1)}\oplus\rho'_{(\mu_1,\mu_1)}$. We correspond $\tau$ to $\rho_{(\mu_1,\mu_1)}$. If $\mu_1\ne\mu_2$, then $\widehat\mu=\rho_{(\mu_1,\mu_2)}$. We correspond $\tau$ to $\rho_{(\mu_1,\mu_2)}$.
+
+This correspondence is injective.\footnote{Piatetski-Shapiro claims that this correspondence is bijective, but the following description of the inverse map only hits reducible representations $\tau$ with $\tau(\varphi)=1$.} Indeed, starting from a pair of characters $(\mu_1,\mu_2)$ of $K^\times$, we define characters $\tau_1,\tau_2$ of $W(L/K)$ by $\tau_i(x)\coloneqq\mu_i(\op Nx)$ and $\tau_i(\varphi)=1$. This definition makes sense because it is compatible with the relations \eqref{eq:weil-relations}. Then $\tau_{(\mu_1,\mu_2)}=\tau_1\oplus\tau_2$ is a reducible two-dimensional representation of $W(L/K)$, and $\rho_{(\mu_1,\mu_2)}$ corresponds to $\tau_{(\mu_1,\mu_2)}$.
+
+Finally, let $\nu$ be a non-decomposable character of $L^\times$. Define a two-dimensional representation $\tau_\nu$ of $W(L/K)$ by
+\[\tau_\nu(x)\coloneqq\begin{bmatrix}
+	\nu(x) & 0 \\
+	0 & \nu(\overline x)
+\end{bmatrix}\text{ for }x\in L^\times,\qquad\text{and}\qquad\tau_\nu(\varphi)\coloneqq\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}.\]
+Then $\op{Res}_{L^\times}\tau_\nu=\nu\oplus\overline\nu$; hence, $\tau_\nu$ is irreducible. If $\nu'$ is an additional non-decomposable character of $L^\times$, then $\tau_\nu=\tau_{\nu'}$ if and only if $\nu'$ is conjugate to $\nu$. It follows that $W(L/K)$ has exactly $\frac12\left(q^2-q\right)$ irreducible representations of the form $\tau_\nu$. Taking into account \Cref{lem:res-weil-rep}, we deduce from the identity
+\[2\left(q^2-1\right)=2^2\cdot\frac12\left(q^2-1\right)+1^2\cdot2(q-1)\]
+that the $\tau_\nu$ are all the irreducible representations of $W(L/K)$.
+
+Adding \Cref{prop:cusp-reps} to the above arguments, we have proved the following reciprocity law.
+\begin{theorem}
+	There exists an injective correspondence between the two-dimensional representations $\tau$ of the Weil group $W(L/K)$ and the higher-dimensional representations of $\op{GL}(2,K)$.
+
+	Using the above notation, the correspondence may be described as follows.
+	\begin{listalph}
+		\item For reducible $\tau$: if $(\mu_1,\mu_2)$ is a pair of characters $K^\times$, then $\tau_{(\mu_1,\mu_2)}$ corresponds to $\rho_{(\mu_1,\mu_2)}$.
+		\item For irreducible $\tau$: if $\nu$ is a non-decomposable character of $L^\times$, then $\tau_\nu$ corresponds to $\rho_\nu$.
+	\end{listalph}
+\end{theorem}
 
 \end{document}
