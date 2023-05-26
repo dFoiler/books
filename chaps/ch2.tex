@@ -6,7 +6,7 @@
 
 This chapter starts with the representations of $P$, then investigates the behavior of representations of $G$ that are induced from characters of $B$, and finally describes the cuspidal representations of $G$, i.e., those representations that do not appear as components of the induced ones. The chapter ends with Weil's reciprocity law.
 
-\section{The representations of \texorpdfstring{$P$}{ P}}
+\section{The representations of \texorpdfstring{$P$}{ P}} \label{sec:reps-of-p}
 We use the method of ``small groups'' of Wigner in order to determine the representations of $P$.%\todo{}
 
 First, we fix for the rest of these notes a non-unit character $\psi$ of $K^+$. We consider it also as a character of $U$. For every $a\in A$, we define a character $\psi_a$ of $U$ by
@@ -415,7 +415,7 @@ If $F\left(\begin{bmatrix}
 \end{bmatrix}\right)\ne0$, then $\psi(\beta)=\psi\left(\alpha^{-1}\delta\beta\right)$; hence, $\psi\left(\beta\left(1-\alpha^{-1}\delta\right)\right)=1$ for every $\beta\in K$. It follows that $\psi$ is the unit character of $K^+$, which is a contradiction.
 
 This completes the alternative proof of \Cref{prop:cuspidal-dim}(a). Note that we have actually also proved the following proposition.
-\begin{proposition}
+\begin{proposition} \label{prop:ind-psi-has-no-mult}
 	The representation $\op{Ind}^G_U\psi$ has no multiple components.
 \end{proposition}
 
@@ -752,7 +752,7 @@ We have therefore proved that for an element $g$ given by \eqref{eq:g-notin-b},
 where
 \[k(y,x;g)\coloneqq\frac1q\psi\left(\frac{\alpha y+\delta x}\gamma\right)\sum_{\substack{u\overline u=yx^{-1}\det g\\u\in L^\times}}\psi\left(-\frac x\gamma(u+\overline u)\right)\nu(u).\]
 
-\section{The correspondence between \texorpdfstring{$\nu$}{ v} and \texorpdfstring{$\rho_\nu$}{ pv}}
+\section{The correspondence between \texorpdfstring{$\nu$}{ v} and \texorpdfstring{$\rho_\nu$}{ pv}} \label{sec:classify-cusp}
 \begin{proposition} \label{prop:cusp-reps}
 	The following are true.
 	\begin{listalph}

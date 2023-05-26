@@ -5,12 +5,375 @@
 \begin{document}
 
 \section{Whittaker models}
+Recall that we have fixed a non-unit character $\psi$ of $K^+$, identified with a character of $U$ and found that $\pi\coloneqq\op{Ind}^P_U$ is an irreducible representation of dimension $q-1$. If $\chi$ is a character of $g$, then by the Frobenius reciprocity theorem,
+\[\left(\chi,\op{Ind}^G_U\psi\right)_G=\left(\chi,\op{Ind}^G_B\pi\right)_G=\left(\op{Res}^G_B\chi,\pi\right)_B=0.\]
+Hence, all the irreducible components of $\op{Ind}^G_U\psi$ are of dimension $>1$. Each one of them appears in multiplicity $1$ by \Cref{prop:ind-psi-has-no-mult}. On the other hand, if we sum up the dimensions of all higher-dimensional representations of $G$, we find that it is equal to $\dim\op{Ind}^G_U\psi=(q-1)^2(q+1)$. This follows from the table in \cref{sec:classify-cusp} and from the following identity:
+\[\frac12\left(q^2-q\right)(q-1)+(q-1)q+\frac12(q-1)(q-2)(q+1)=(q-1)^2(q+1).\]
+We conclude therefore the following.
+\begin{theorem} \label{thm:ind-psi-has-reps}
+	The representation $\op{Ind}^G_U\psi$ is equal to the direct sum of all higher-dimensional irreducible representations of $G$, each with multiplicity $1$.
+\end{theorem}
+Note that the same conclusion can be drawn from the following lemma, which his proved, however, without explicit use of the finiteness of $K$.
+\begin{lemma} \label{lem:ind-psi-has-reps}
+	Let $\rho$ be an irreducible representation of $G$ of dimension $>1$. Then the following are true.
+	\begin{listalph}
+		\item $\op{Res}^G_PV_\rho=\op{Res}^B_PJ(V_\rho)\oplus V_\pi$;
+		\item $\dim J(V_\rho)=\dim\rho-(q-1)$;
+		\item The multiplicity of $\rho$ in $\op{Ind}^G_U\psi$ is equal to $1$.
+	\end{listalph}
+\end{lemma}
+\begin{proof}
+	If $\dim\rho=q-1$, i.e., if $\rho$ is cuspidal, then $J(V_\rho)=0$, and $\op{Res}^G_PV_\rho=V_\pi$ by \Cref{prop:cuspidal-dim}. Formula (a) is therefore true in this case.
+
+	If $\dim\rho\ge q$, i.e., if $\rho$ is non-cuspidal, then $J(V_\rho)\ne0$ and there exists a character $\mu$ of $B$ and a representation $\rho'$ of $G$ such that $\widehat\mu=\op{Ind}^G_P\mu=\rho'\oplus\rho$ and $\dim\rho'\le1$. Further, by \Cref{lem:decomp-res-mu-hat}, we have $\op{Res}^G_PV_{\widehat\mu}=\op{Res}^B_PJ(V_{\widehat\mu})\oplus V_\pi$; hence,
+	\begin{equation}
+		\op{Res}^G_PV_{\rho'}\oplus\op{Res}^G_PV_\rho=\op{Res}^G_PJ(V_{\rho'})\oplus\op{Res}^G_PJ(V_\rho)\oplus V_\pi. \label{eq:almost-res-rho-decomp}
+	\end{equation}
+	Now, $V_\pi$ does not contain any one-dimensional $P$-modules because $\dim V_\pi=q-1>1$ and $V_\pi$ is $P$-irreducible. It follows that $V_\pi\subseteq\op{Res}^G_PV_\rho$. Further, $\op{Res}^G_PJ(V_\rho)$ is certainly contained in $V_\rho$, and by \Cref{lem:eigens-of-jac-mu-hat}, it decomposes into a direct sum of one-dimensional $P$-subspaces. Hence, $\op{Res}^B_PV_\pi\cap\op{Res}^B_PJ(V_\rho)=0$, and thus the right-hand side of (a) is contained in its left-hand side. If $\dim\rho=q$, then because the dimension of the right-hand side of (a) is $\ge1+(q-1)$, we may conclude the equality. If $\dim\rho=q+1$, then $\rho'=0$, and \eqref{eq:almost-res-rho-decomp} coincides with (a).
+
+	Note that we have also proved that the multiplicity of $\pi$ in $\op{Res}^G_P\rho$ is $1$. Hence, by the Frobenius reciprocity theorem the multiplicity of $\rho$ in $\op{Ind}^G_U\psi=\op{Ind}^G_B\pi$ is $1$.
+\end{proof}
+
+Recall that $\op{Ind}^G_UV_\psi$ can be identified with the space of all functions $F\colon G\to\CC$ such that
+\[F(ug)=\psi(u)F(g)\qquad\text{for all }u\in U\text{ and }g\in G.\]
+The group $G$ operates on $\op{Ind}^G_UV_\psi$ by the following law:
+\[(sF)(g)=F(gs).\]
+If $\rho$ is now an irreducible higher-dimensional representation of $G$, then $V_\rho$ can be embedded in $\op{Ind}^G_UV_\psi$. For every $v\in V_\rho$, there exist therefore a function $W_v\colon G\to\CC$ called a \textit{Whittaker function} of $\rho$ such that the following rules hold:
+\[\begin{array}{cc}
+	W_v=0\iff v=0, \\
+	W_{c_1v_1+c_2v_2}=c_1W_{v_1}+c_2W_{v_2} & \text{for }c_1,c_2\in\CC, \\
+	W_v(ug)=\psi(u)W_v(g) & \text{for }u\in U\text{ and }g\in G, \\
+	W_{\rho(s)v}=W_v(gs) & \text{for }s,g\in G.
+\end{array}\]
+The set of all functions $W_v$ forms a $G$-subspace $W(\rho)$ of $\op{Ind}^G_UV_\psi$ called the \textit{Whittaker model} of $\rho$. By \Cref{thm:ind-psi-has-reps} or \Cref{lem:ind-psi-has-reps}, this subspace is uniquely determined within $\op{Ind}^G_UV_\psi$. Moreover, if $\rho'$ is an additional higher-dimensional representation of $G$, then $W(\rho)\cap W(\rho')=0$.
 
 \section{The \texorpdfstring{$\Gamma$}{ Gamma}-function of a representation}
+Let $\rho$ be a higher-dimensional irreducible representation of $G$. The $P$-decomposition
+\begin{equation}
+	V_\rho=J(V_\rho)\oplus V_\pi \label{eq:decomp-res-rho}
+\end{equation}
+of $V_\rho$, obtained in \Cref{lem:ind-psi-has-reps}, is also an $A$-decomposition, where we recall that
+\[A\coloneqq\left\{\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}:\alpha\in K^\times\right\}\]
+is the subgroup of $P$ which is canonically isomorphic to $K^\times$. If $\dim\rho\geq$, then $\rho=\rho_{(\mu_1,\mu_2)}$ are characters of $K^\times$. By \Cref{lem:eigens-of-jac-mu-hat}, they are the eigenvalues of $A$ on $J(V_\rho)$. If $\dim\rho=q+1$, then $\mu_1\ne\mu_2$ and $\dim J(V_\rho)=2$. If $\dim\rho=q$, then $\mu_1=\mu_2$ and $\dim J(V_\rho)=1$. If $\dim\rho=q-1$, then $J(V_\rho)=0$. In the first two cases we call $\mu_1^{-1}$, $\mu_2^{-1}$, and $\mu_1^{-1}$, respectively, the \textit{exceptional characters} for $\rho$. In the third case there are no exceptional characters. In any case, if the inverse of a character $\omega$ of $K^\times$ is not exceptional, then it is not an eigenvalue of $A$ operating on $J(V_\rho)$ through $\rho$.
+\begin{lemma} \label{lem:almost-gamma-func}
+	If a character $\omega$ of $K^\times$ is not an exceptional character for $\rho$, then any two linear functionals $\ell_1$ and $\ell_2$ of $V_\rho$ satisfying
+	\[\ell_i\left(\rho\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\right)v\right)=\omega(x)^{-1}\ell_i(v)\qquad\text{for every }x\in K^\times\text{ and }v\in V_\rho\]
+	are linearly dependent.
+\end{lemma}
+\begin{proof}
+	Note $\op{Res}^B_AV_\pi$ is isomorphic to the space of all functions $\varphi\colon K^\times\to\CC$, and $A$ acts on this space by the formula
+	\[\left(\rho\left(\begin{bmatrix}
+		\alpha & 0 \\
+		0 & 1
+	\end{bmatrix}\right)\varphi\right)(x)=\varphi(x\alpha).\]
+	Indeed, we may an $f\in V_\pi$ to the function $\varphi$ defined by
+	\[\varphi(x)\coloneqq f\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\right).\]
+	On the other hand, the identity
+	\[\begin{bmatrix}
+		1 & \beta \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		\alpha & 0 \\
+		0 & 1
+	\end{bmatrix}=\begin{bmatrix}
+		\alpha & \beta \\
+		0 & 1
+	\end{bmatrix}\]
+	implies that $\varphi$ also determines $f$.
+
+	There exists now exactly one nonzero function $\varphi$ (up to a multiplication by a scalar) such that $\varphi(x\alpha)=\omega(\alpha)^{-1}\varphi(x)$. This function is defined by $\varphi(x)=\omega(x)^{-1}\varphi(1)$. Using \eqref{eq:decomp-res-rho} and the assumption that the inverse $\omega$ is non-exceptional, this means that $\omega$ is an eigenvalue operating on $V_\rho$ and the subspace of eigenvectors of $A$ belonging to $\omega$ is one-dimensional.
+
+	Now let $\zeta$ be a generator of the cyclic group $K^\times$ and define a linear map $T\colon V_\rho\to V_\rho$ by
+	\[Tv=\rho\left(\begin{bmatrix}
+		\zeta & 0 \\
+		0 & 1
+	\end{bmatrix}\right)v-\omega(\zeta)^{-1}v.\]
+	Then
+	\[\ker T=\left\{v\in V_\rho:\rho\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\right)v=\omega(x)^{-1}v\text{ for all }x\in K^\times\right\}\]
+	is the subspace of eigenvectors belonging to $\omega^{-1}$. We proved that $\dim\ker T=1$. Hence, $\dim T(V_\rho)=\dim\rho-1$. However, $T(V)\subseteq\ker\ell_i$, and $\dim\ker\ell_i=\dim\rho-1$. Hence, $\ker\ell_1=T(V)=\ker\ell_2$. It follows that $\ell_1$ and $\ell_2$ are linearly dependent.
+\end{proof}
+\begin{theorem} \label{thm:def-gamma}
+	Let $\rho$ be a higher-dimensional irreducible representation of $G$, and let $\omega$ be a character of $K^\times$ which is not exceptional for $\rho$. Then there exists a complex number $\Gamma_\rho(\omega)$ such that for every Whittaker function $W_v$ $W_v$ of $\rho$, we have
+	\[\Gamma_\rho(\omega)\sum_{x\in K^\times}W_v\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\right)\omega(x)=\sum_{x\in K^\times}W_v\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\omega(x).\]
+\end{theorem}
+\begin{proof}
+	Define linear functionals $\ell_i$, $i=1,2$ of $V_\rho$ by
+	\[\ell_1(v)\coloneqq\sum_{x\in K^\times}W_v\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\right)\qquad\text{and}\qquad\ell_2(v)\coloneqq\sum_{x\in K^\times}W_v\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\omega(x).\]
+	Then
+	\[\ell_i\left(\rho\left(\begin{bmatrix}
+		\alpha & 0 \\
+		0 & 1
+	\end{bmatrix}\right)v\right)=\omega(\alpha)^{-1}\ell_i(v)\qquad\text{for }i=1,2\]
+	for every $\alpha\in K^\times$ and every $v\in V_\rho$. For example,
+	\begin{align*}
+		\ell_2\left(\rho\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right)v\right) &= \sum_{x\in K^\times}W_{\rho\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			0 & 1 \\
+			x & 0
+		\end{bmatrix}\right)\omega(x) \\
+		&= \sum_{x\in K^\times}W_v\left(\begin{bmatrix}
+			0 & 1 \\
+			x\alpha & 0
+		\end{bmatrix}\right)\omega(x)=\omega(\alpha)^{-1}\sum_{y\in K^\times}W_v\left(\begin{bmatrix}
+			0 & 1 \\
+			y & 0
+		\end{bmatrix}\right)\omega(y) \\
+		&= \omega(\alpha)^{-1}\ell_2(y).
+	\end{align*}
+	It follows from \Cref{lem:almost-gamma-func} that $\ell_2$ is a multiple of $\ell_1$ by a constant.\footnote{Notably, $\ell_2$ is nonzero (and hence $\ell_1$ is nonzero): the proof of \Cref{lem:almost-gamma-func} gives $v\in V_\pi$ which is an eigenvector of $A$ with eigenvalue $\omega^{-1}$. Then we can compute $\ell_2(v)=(q-1)W_v(1)$, so $\ell_2(v)=0$ implies $W_v(1)=0$. However, this means $W_v(a)=W_{av}(1)=\omega^{-1}(a)W_v(1)=0$ for any $a\in A$, so \Cref{lem:ker-r-computation} below implies that $v\in J(V_\rho)$, so $v=0$ because $v\in V_\pi$, which is a contradiction.} We denote this constant by $\Gamma_\rho(\omega)$.
+\end{proof}
+
+The complex-valued function $\Gamma_\rho(\omega)$ defined for every non-exceptional character $\omega$ of $K^\times$ will play an important role in the computation of the character table of $G$.
 
 \section{Determination of \texorpdfstring{$\rho$}{ rho} by \texorpdfstring{$\Gamma_\rho$}{ Gamma rho}}
+Let $\rho$ be a higher-dimensional representation of $G$. For every $v\in V_\rho$, let $W_v$ be the corresponding Whittaker function of $\rho$, and let $r$ be the homomorphism of $V_\rho$ into the space $F\left(K^\times,\CC\right)$ of all functions $\varphi\colon K^\times\to\CC$ defined by $r(v)\coloneqq\op{Res}_A^GW_v$. If we define an operation of $K^\times$ on $F\left(K^\times,\CC\right)$ by $(\alpha\cdot\varphi)(x)=\varphi(x\alpha)$ and identify $A$ with $K^\times$, then $r$ is also an $A$-homomorphism.
+\begin{lemma} \label{lem:ker-r-computation}
+	The homomorphism $r$ is surjective, and $\ker r=J(V_\rho)$.
+\end{lemma}
+\begin{proof}
+	We start by determining the kernel of $r$. Let $v\in J(V_\rho)$; then for every $\alpha\in K^\times$, we choose a $\beta\in K$ such that $\psi(\alpha\beta)\ne0$. Then
+	\begin{align*}
+		W_v\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right) &= W_{\rho\left(\begin{bmatrix}
+			1 & \beta \\
+			0 & 1
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right) \\
+		&= W_v\left(\begin{bmatrix}
+			\alpha & \alpha\beta \\
+			0 & 1
+		\end{bmatrix}\right) \\
+		&= W_v\left(\begin{bmatrix}
+			1 & \alpha\beta \\
+			0 & 1
+		\end{bmatrix}\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right) \\
+		&= \psi(\alpha\beta)W_v\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right).
+	\end{align*}
+	Hence, $W_v\left(\begin{bmatrix}
+		\alpha & 0 \\
+		0 & 1
+	\end{bmatrix}\right)=0$; i.e., $v\in\ker r$.
+
+	To prove that $\ker r\subseteq J(V_\rho)$, recall again the $P$-decomposition $V=J(V_\rho)\oplus V_\pi$ (see \Cref{lem:ind-psi-has-reps}). Then $V_\pi\cap\ker r$ is left-invariant by $P$. This follows from the decomposition $P=AU$ and from the following two computations: let $v\in V_\pi\cap\ker r$; then
+	\begin{align}
+		W_{\rho\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right)&=W_v\left(\begin{bmatrix}
+			\alpha\alpha' & 0 \\
+			0 & 1
+		\end{bmatrix}\right)=0, \notag \\
+		W_{\rho\left(\begin{bmatrix}
+			1 & \beta \\
+			0 & 1
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			\alpha & 1 \\
+			0 & 1
+		\end{bmatrix}\right)&=\psi(\alpha\beta)W_v\left(\begin{bmatrix}
+			\alpha & 0 \\
+			0 & 1
+		\end{bmatrix}\right)=0. \label{eq:whittaker-apply-u}
+	\end{align}
+	It follows that $V_\pi\cap\ker r=0$ or $V_\pi\cap\ker r=V_\pi$ because $V_\pi$ is $P$-irreducible.
+
+	Assume that $V_\pi\cap\ker r=V_\pi$. Then by the first part of the prof, $W_v(a)=0$ for every $v\in V$ and every $a\in A$. Hence, if $g\in G$, then $W_v(G)=W_{\rho(g)v}(1)=0$, i.e., $v=0$, which is a contradiction. It follows that $V_\pi\cap\ker r=0$; hence $\ker r=J(V_\rho)$. This fact implies that $\dim\im r=\dim V_\rho-\dim J(V_\rho)=q-1=\dim F\left(K^\times,\CC\right)$. Hence, $\im r=F\left(K^\times,\CC\right)$.
+\end{proof}
+
+The center $Z$ of $G$ consists of the scalar matrices and is therefore canonically isomorphic to $K^\times$. The restriction of $\rho$ to $Z$ can therefore be identified with a character $\omega_P$ of $K^\times$, called the central character of $\rho$.
+\begin{proposition}
+	A cuspidal representation $\rho$ of $G$ is uniquely determined by its $\Gamma$-function and its central character.
+\end{proposition}
+\begin{proof}
+	Let $\rho$ and $\rho'$ be two cuspidal representation of $G$. Then by \Cref{prop:cuspidal-dim}, $\op{Res}^G_P\rho=\pi=\op{Res}^G_P\rho'$. If $\rho$ and $\rho'$ coincide on $Z$, then they coincide on $B$ since $B=ZP$. Suppose in addition that $\Gamma_\rho=\Gamma_{\rho'}$. We have to prove that $\rho=\rho'$. The Bruhat decomposition $G=B\sqcup BwU$ implies that it suffices to show that $\rho(w)=\rho'(w)$.
+
+	Both representations $\rho$ and $\rho'$ are of dimension $q-1$. We can therefore assume that both of them act on the space $V$. For every $v\in V$, let $W_v$ and $W'_v$ be Whittaker functions of $\rho$ and $\rho'$, respectively. We know that $J(V_\rho)=J(V_{\rho'})=0$; hence, by \Cref{lem:ker-r-computation} the maps $v\mapsto\op{Res}^G_AW_v$ and $v\mapsto\op{Res}^G_AW'_v$ are $A$-isomorphisms of $V$ onto $F\left(K^\times,\CC\right)$. Hence, without loss of generality, we can assume that $\op{Res}^G_AW_v=\op{Res}_A^GW'_v$.\footnote{I find this argument unsatisfactory. Here's an alternate: fix $v_0\in V$ which is an $A$-eigenvector with eigenvalue $\omega$, which implies $W_{v_0}(1),W_{v_0}'(1)\ne0$ as explained previously. Scaling, we may assume $W_{v_0}(1)=W_{v_0}(1)$. Note $W_{v_0}(a)=W'_{v_0}(a)$ for any $a\in A$. Properties of Whittaker functions allow us to extend this to $W_{auv_0}(a')=\psi\left((aa')u(aa')^{-1}\right)\omega(aa')W_{v_0}(1)=W'_{auv_0}(a')$ for any $a,a'\in A$ and $u\in U$. Thus, $\op{Res}^G_AW_v=\op{Res}^G_AW_v'$ for any $v\in Pv_0$, but $Pv_0$ spans $V$ because $\op{Res}^G_PV=V_\pi$ is $P$-irreducible.}
+
+	Therefore, by \Cref{thm:def-gamma}, the assumption $\Gamma_{\rho}=\Gamma_{\rho'}$ implies that for every character $\omega$ of $K^\times$,
+	\[\sum_{x\in K^\times}W_v\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)=\sum_{x\in K^\times}W'_v\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right).\]
+	This implies by Artin's lemma that
+	\[W_v\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)=W'_v\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\qquad\text{for every }x\in K^\times.\]
+	Hence,
+	\begin{align*}
+		W_{\rho(w)v}\left(\begin{bmatrix}
+			x & 0 \\
+			0 & 1
+		\end{bmatrix}\right) &= W_v\left(\begin{bmatrix}
+			x & 0 \\
+			0 & 1
+		\end{bmatrix}\begin{bmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{bmatrix}\right) \\
+		&= W_v\left(\begin{bmatrix}
+			0 & 1 \\
+			x^{-1} & 0
+		\end{bmatrix}\begin{bmatrix}
+			x & 0 \\
+			0 & x
+		\end{bmatrix}\right) \\
+		&= W_{\rho\left(\begin{bmatrix}
+			x & 0 \\
+			0 & x
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			0 & 1 \\
+			x^{-1} & 0
+		\end{bmatrix}\right) \\
+		&= W_{\rho'\left(\begin{bmatrix}
+			x & 0 \\
+			0 & x
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			0 & 1 \\
+			x^{-1} & 0
+		\end{bmatrix}\right) \\
+		&= W'_{\rho'\left(\begin{bmatrix}
+			x & 0 \\
+			0 & x
+		\end{bmatrix}\right)v}\left(\begin{bmatrix}
+			0 & 1 \\
+			x^{-1} & 0
+		\end{bmatrix}\right) \\
+		&= W'_{\rho'(w)}\left(\begin{bmatrix}
+			x & 0 \\
+			0 & 1
+		\end{bmatrix}\right).
+	\end{align*}
+	Hence, by \Cref{lem:ker-r-computation}, $W_{\rho(w)v}=W'_{\rho'(w)v}$, and hence $\rho(w)=\rho'(w)$.
+\end{proof}
 
 \section{The Bessel function of a representation}
+Let $\rho$ be a higher-dimensional representation of $G$. Then $\dim V_\rho>2\ge\dim J(V_\rho)$ except in the case where $q=3$ and $\dim\rho=2$. In this case, $\rho$ is however cuspidal and $J(V_\rho)=0$. Therefore, $J(V_\rho)\ne V_\rho$ in all cases.
+
+As $U$ is an abelian group, $\op{Res}^G_U\rho$ decomposes into a direct sum of characters. One of them must be different from the unit character. Indeed, otherwise we would have that
+\[\rho\left(\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}\right)v=v\]
+for every $\beta\in K$ and every $v\in V_\rho$. Then by \eqref{eq:whittaker-apply-u},
+\[W_v\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\right)=\psi(\alpha\beta)W_v\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\right)\]
+for every $\alpha\in K^\times$. Hence, $\op{Res}^G_AW_v=0$, and hence $v\in J(V_\rho)$ by \Cref{lem:ker-r-computation}. This contradicts the inequality $J(V_\rho)\ne V_\rho$. There exists therefore a non-unit character $\psi_1$ of $K^+$ and a nonzero vector $v_1'\in V_\rho$ such that
+\[\rho\left(\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}\right)v_w'=\psi_1(\beta)v_1'\qquad\text{for every }\beta\in K.\]
+By \cref{sec:reps-of-p}, there exists an $\alpha\in K^\times$ such that $\psi_1(\beta)=\psi(\alpha\beta)$. Using the identity
+\[\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	1 & \alpha^{-1}y \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	\alpha^{-1} & 0 \\
+	0 & 1
+\end{bmatrix}=\begin{bmatrix}
+	1 & y \\
+	0 & 1
+\end{bmatrix}\]
+and replacing $v_1'$ by $v_1\coloneqq\rho\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\right)v_1'$, we get that
+\begin{equation}
+	\rho\left(\begin{bmatrix}
+		1 & \beta \\
+		0 & 1
+	\end{bmatrix}\right)v_1=\psi(\beta)v_1)\qquad\text{for every }\beta\in K. \label{eq:v1-is-psi-eigen}
+\end{equation}
+It follows that if $\alpha\in K^\times$, then
+\[\psi(\beta)W_{v_1}\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\right)=\psi(\alpha\beta)W_{v_1}\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\right).\]
+If $\alpha\ne1$, then we may conclude that
+\[W_{v_1}\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\right)=0.\]
+Further, \eqref{eq:v1-is-psi-eigen} implies that $v_1\notin J(V_\rho)$. Hence, $\op{Res}_AW_{v_1}\ne0$ by \Cref{lem:ker-r-computation} and therefore $W_{v_1}(1)\ne0$. The vector $v_1$ is said to be a \textit{Bessel vector} for $\rho$.
+
+If $v_2$ if an additional Bessel vector for $\rho$, then by the last paragraph, there exists a $\zeta\in\CC$ such that $W_{v_1}(a)=\zeta W_{v_2}(a)$ for every $a\in A$. Using \Cref{lem:ker-r-computation} once again, we conclude that $v_1-\zeta v_2\in J(V_\rho)$. Hence,
+\[\psi(\beta)(v_1-\zeta v_2)=\rho\left(\begin{bmatrix}
+	1 & \beta \\
+	0 & 1
+\end{bmatrix}\right)(v_1-\zeta v_2)=v_1-\zeta v_2\qquad\text{for every }\beta\in K.\]
+Hence, $v_1=\zeta v_2$. Thus, up to a scalar multiple, there exists only one Bessel vector for $\rho$. We use this vector to define the \textit{Bessel function} $J_\rho\colon G\to\CC$ of $\rho$ by
+\[J_\rho(g)\coloneqq\left(W_{v_1}\left(\begin{bmatrix}
+	1 & 0 \\
+	0 & 1
+\end{bmatrix}\right)\right)^{-1}W_{v_1}(g).\]
+Clearly, $J_\rho(g)$ does not depend on the particular Bessel vector $v_1$ which is used in its definition. Note that $J_\rho$ is also a Whittaker function for $\rho$. Therefore,
+\[J_\rho(gu)=J_\rho(ug)=\psi(u)J_\rho(g)\qquad\text{for }u\in U\text{ and }g\in G.\]
+Also,
+\[J_\rho(1)=1\qquad\text{and}\qquad J_\rho(a)=0\text{ if }a\ne1\text{ and }a\in A.\]
+Therefore, if a character $\omega$ of $K^\times$ is not exceptional for $\rho$, we have by \Cref{thm:def-gamma} that
+\[\Gamma_\rho(\omega)=\sum_{x\in K^\times}J_\rho\left(\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\right)\omega(x).\]
+One can use this formula to define $\Gamma_\rho(\omega)$ also for the exceptional characters. We shall use this formula in the next two sections in order to compute $\Gamma_\rho$.
 
 \section{A computation of \texorpdfstring{$\Gamma_\rho(\omega)$}{ Gamma rho(omega)} for a non-cuspidal \texorpdfstring{$\rho$}{ rho}}
 

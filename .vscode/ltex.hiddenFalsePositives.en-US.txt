@@ -196,3 +196,5 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qno. of elements\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qno. of elements \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qclasses chars.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIf \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, then \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIn any case, if the inverse of a character \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is not exceptional, then it is not an eigenvalue of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q operating on \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q through \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
