@@ -583,9 +583,9 @@ It follows that we must define $\rho$ on $B$ by
 \end{equation}
 A straightforward calculation shows that $\rho$ is indeed a homomorphism of $B$ into $\op{Aut}V$.
 
-In order to define $\rho(w')$, we define a function $j\colon K^\times\to\CC$ by
+In order to define $\rho(w')$, we define a function $j\colon K^\times\to\CC$ by\footnote{This is the negative of how Piatetski-Shapiro defines $j$. However, Piatetski-Shapiro's definition makes \Cref{lem:j2} below off by a sign.}
 \begin{equation}
-	j(u)\coloneqq\frac1q\sum_{\substack{\op Nt=u\\t\in L^\times}}\psi\left(t+\overline t\right)\nu(t) \label{eq:def-cusp-j}
+	j(u)\coloneqq-\frac1q\sum_{\substack{\op Nt=u\\t\in L^\times}}\psi\left(t+\overline t\right)\nu(t) \label{eq:def-cusp-j}
 \end{equation}
 and prove that it satisfies the following two identities.
 \begin{lemma} \label{lem:j1}
@@ -665,7 +665,7 @@ and prove that it satisfies the following two identities.
 	\begin{align*}
 		L(x,y) &= -q^{-1}\psi(-x-y)\sum_{\op N\lambda=xy}\psi\left(-\lambda-\overline\lambda\right)\nu(\lambda)-q^{-2}\sum_{\op N\lambda=xy}\nu(\lambda) \\
 		&= -q^{-1}\psi(-x-y)\nu(-1)\sum_{\op N\lambda=xy}\psi\left(\lambda+\overline\lambda\right)\nu(\lambda) \\
-		&= \nu(-1)\psi(-x-y)j(xy),
+		&= -\nu(-1)\psi(-x-y)j(xy),
 	\end{align*}
 	as desired.
 \end{proof}
@@ -743,14 +743,18 @@ and apply \eqref{eq:def-cusp-b} and \eqref{eq:def-cusp-wp} to compute the action
 		0 & 1
 	\end{bmatrix}\right)f\right)(x) \\
 	&= \nu(-\gamma)\psi\left(\alpha\gamma^{-1}y\right)\sum_{x\in K^\times}\nu\left(x^{-1}\right)j\left(\gamma^{-2}yx\det g\right)\psi\left(\gamma^{-1}\delta x\right)f(x) \\
-	&= \nu(-\gamma)\psi\left(\alpha\gamma^{-1}y\right)\sum_{x\in K^\times}\nu\left(x^{-1}\right)\psi\left(\gamma^{-1}\delta x\right)f(x)\left(q^{-1}\right)\sum_{\substack{t\overline t=\gamma^{-2}yx\det g\\t\in L^\times}}\psi\left(t+\overline t\right)\nu(t).
+	&= -\nu(-\gamma)\psi\left(\alpha\gamma^{-1}y\right)\sum_{x\in K^\times}\nu\left(x^{-1}\right)\psi\left(\gamma^{-1}\delta x\right)f(x)\left(q^{-1}\right)\sum_{\substack{t\overline t=\gamma^{-2}yx\det g\\t\in L^\times}}\psi\left(t+\overline t\right)\nu(t).
 \end{align*}
 Substituting $t=-\gamma^{-1}xu$,
-\[(\rho(g)f)(y)=\sum_{x\in K^\times}\left[q^{-1}\psi\left(\frac{\alpha y+\delta x}\gamma\right)\sum_{\substack{u\overline u=yx^{-1}\det g\\u\in L^\times}}\psi\left(-\frac x\gamma(u+\overline u)\right)\nu(u)\right]f(x).\]
+\[(\rho(g)f)(y)=\sum_{x\in K^\times}\left[-q^{-1}\psi\left(\frac{\alpha y+\delta x}\gamma\right)\sum_{\substack{u\overline u=yx^{-1}\det g\\u\in L^\times}}\psi\left(-\frac x\gamma(u+\overline u)\right)\nu(u)\right]f(x).\]
 We have therefore proved that for an element $g$ given by \eqref{eq:g-notin-b},
-\[(\rho(g)f)(y)=\sum_{x\in K^\times}k(y,x;g)f(x),\]
+\begin{equation}
+	(\rho(g)f)(y)=\sum_{x\in K^\times}k(y,x;g)f(x), \label{eq:general-cuspidal-def}
+\end{equation}
 where
-\[k(y,x;g)\coloneqq\frac1q\psi\left(\frac{\alpha y+\delta x}\gamma\right)\sum_{\substack{u\overline u=yx^{-1}\det g\\u\in L^\times}}\psi\left(-\frac x\gamma(u+\overline u)\right)\nu(u).\]
+\begin{equation}
+	k(y,x;g)\coloneqq-\frac1q\psi\left(\frac{\alpha y+\delta x}\gamma\right)\sum_{\substack{u\overline u=yx^{-1}\det g\\u\in L^\times}}\psi\left(-\frac x\gamma(u+\overline u)\right)\nu(u). \label{eq:general-cuspidal-matrix}
+\end{equation}
 
 \section{The correspondence between \texorpdfstring{$\nu$}{ v} and \texorpdfstring{$\rho_\nu$}{ pv}} \label{sec:classify-cusp}
 \begin{proposition} \label{prop:cusp-reps}

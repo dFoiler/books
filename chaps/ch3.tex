@@ -234,10 +234,10 @@ The center $Z$ of $G$ consists of the scalar matrices and is therefore canonical
 	\[\sum_{x\in K^\times}W_v\left(\begin{bmatrix}
 		0 & 1 \\
 		x & 0
-	\end{bmatrix}\right)=\sum_{x\in K^\times}W'_v\left(\begin{bmatrix}
+	\end{bmatrix}\right)\omega(x)=\sum_{x\in K^\times}W'_v\left(\begin{bmatrix}
 		0 & 1 \\
 		x & 0
-	\end{bmatrix}\right).\]
+	\end{bmatrix}\right)\omega(x).\]
 	This implies by Artin's lemma that
 	\[W_v\left(\begin{bmatrix}
 		0 & 1 \\
@@ -367,18 +367,613 @@ Hence, $v_1=\zeta v_2$. Thus, up to a scalar multiple, there exists only one Bes
 Clearly, $J_\rho(g)$ does not depend on the particular Bessel vector $v_1$ which is used in its definition. Note that $J_\rho$ is also a Whittaker function for $\rho$. Therefore,
 \[J_\rho(gu)=J_\rho(ug)=\psi(u)J_\rho(g)\qquad\text{for }u\in U\text{ and }g\in G.\]
 Also,
-\[J_\rho(1)=1\qquad\text{and}\qquad J_\rho(a)=0\text{ if }a\ne1\text{ and }a\in A.\]
+\begin{equation}
+	J_\rho(1)=1\qquad\text{and}\qquad J_\rho(a)=0\text{ if }a\ne1\text{ and }a\in A. \label{eq:bessel-on-a}
+\end{equation}
 Therefore, if a character $\omega$ of $K^\times$ is not exceptional for $\rho$, we have by \Cref{thm:def-gamma} that
-\[\Gamma_\rho(\omega)=\sum_{x\in K^\times}J_\rho\left(\begin{bmatrix}
-	0 & 1 \\
-	x & 0
-\end{bmatrix}\right)\omega(x).\]
+\begin{equation}
+	\Gamma_\rho(\omega)=\sum_{x\in K^\times}J_\rho\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\omega(x). \label{eq:general-gamma}
+\end{equation}
 One can use this formula to define $\Gamma_\rho(\omega)$ also for the exceptional characters. We shall use this formula in the next two sections in order to compute $\Gamma_\rho$.
 
 \section{A computation of \texorpdfstring{$\Gamma_\rho(\omega)$}{ Gamma rho(omega)} for a non-cuspidal \texorpdfstring{$\rho$}{ rho}}
+Let $\rho$ be a higher-dimensional irreducible representation of $G$ which is not cuspidal. Then $\rho$ is a component of $\widehat\mu\coloneqq\op{Ind}^G_B\mu$, where $\mu$ is a character of $B$ that corresponds to the pair of characters $(\mu_1,\mu_2)$ of $K^\times$. We may consider therefore as an irreducible $G$-subspcae of $\op{Ind}^G_BV_\mu$. Every element of $V_\rho$ appears then as a function $f\colon G\to\CC$ such that
+\[f(bg)=\mu(b)f(g)\qquad\text{for }b\in B,g\in G.\]
+The action of $G$ on $V_\rho$ is given by $(\rho(s)f)(g)=f(gs)$.
+
+We shall use this description of $V_\rho$ in order to give a concrete Whittaker model for $\rho$. For every $f\in V_\rho$, let $W_f\colon G\to\CC$ be the function defined by
+\begin{equation}
+	W_f(g)\coloneqq\sum_{z\in K}f\left(w\begin{bmatrix}
+		1 & z \\
+		0 & 1
+	\end{bmatrix}g\right)\psi(z)^{-1}. \label{eq:non-cusp-whittaker-model}
+\end{equation}
+It is easy to check that $W_f$ satisfies the equalities characterizing Whittaker's functions
+\[\begin{array}{cc}
+	W_v=0\iff v=0, \\
+	W_{c_1v_1+c_2v_2}=c_1W_{v_1}+c_2W_{v_2} & \text{for }c_1,c_2\in\CC, \\
+	W_v(ug)=\psi(u)W_v(g) & \text{for }u\in U\text{ and }g\in G, \\
+	W_{\rho(s)v}=W_v(gs) & \text{for }s,g\in G.
+\end{array}\]
+The map $f\mapsto W_f$ is therefore a linear map from $V_\rho$ into $\op{ind}^G_UV_\psi$. We show that its kernel is zero by constructing a specific function $f_1\in V_\rho$ such that $W_{f_1}\ne0$. This implies that the map is injective and hence that $\{W_f:f\in V_\rho\}$ is a Whittaker model for $\rho$.
+
+Using Bruhat's decomposition $G=B\sqcup BwU$, we define $f_1$ by
+\begin{align}
+	f_1(b) \coloneqq{}& 0, \label{eq:f1-on-b} \\
+	f_1(bwu) \coloneqq{}& \mu(b)\psi(u)\qquad\text{for }b\in B\text{ and }u\in U. \label{eq:f1-on-bwu}
+\end{align}
+Then $f_1$ is a nonzero element of $\op{Ind}^G_BV_\mu$, and it satisfies
+\begin{equation}
+	f_1(gu) = \psi(u)f_1(g)\qquad\text{for }g\in G\text{ and }u\in U. \label{eq:f1-eigenvalue}
+\end{equation}
+We prove that $f_1$ belongs to $V_\rho$.
+
+If $\dim\rho=q+1$, then $V_\rho=\op{Ind}^G_BV_\mu$, and there is nothing to prove. We can therefore assume that $\dim\rho=q$. In this case, $\widehat\mu=\rho'\oplus\mu$, where $\rho'$ is a one-dimensional representation of $G$; hence, $\op{Ind}^G_BV_\mu=V_{\rho'}\oplus V_\rho$. We can therefore write $f_1=f'+f$, where $f'\in V_{\rho'}$ and $f\in V_\rho$. Now, for a fixed $u\in U$, the function $g\mapsto f'(gu)$ and $g\mapsto\psi(u)f'9g)$ belong to $V_{\rho'}$, whereas the functions $g\mapsto f(gu)$ and $g\mapsto\psi(u)f(g)$ belong to $V_\rho$. Using \eqref{eq:f1-eigenvalue}, we conclude that
+\begin{equation}
+	f'(gu)=\psi(u)f'(g)\qquad\text{for }g\in G. \label{eq:fp-computation1}
+\end{equation}
+By the proof of \Cref{lem:to-reducible}, the function $f'$ satisfies
+\begin{equation}
+	f'(g)=f'(1)\mu_1(\det g)\qquad\text{for }g\in G. \label{eq:fp-computation2}
+\end{equation}
+It follows from \eqref{eq:fp-computation1} that $f'(1)=\psi(u)f'(1)$ for every $u\in U$. Hence, $f'(1)=0$. This implies $f'=0$ by \eqref{eq:fp-computation2}. It follows that $f_1=f\in V_\rho$. Computing $W_{f_1}$ for $u'\in U$, we find
+\[W_{f_1}(u')=\sum_{u\in U}f_1(wuu')\psi(u)^{-1}=\sum_{u\in U}\psi(uu')\psi(u)^{-1}=q\psi(u').\]
+Hence, $W_{f_1}\ne0$, and our contention is proved.
+
+Note that \eqref{eq:f1-eigenvalue} implies now that $f_1$ is a Bessel vector for $\rho$. We shall use this information in order to compute the Bessel function $J_\rho$, but first let us sum up the results proved in this section up to now.
+\begin{lemma}
+	Let $\rho$ be a non-cuspidal higher-dimensional irreducible representation of $G$. Then the subspace $\{W_f:f\in V_\rho\}$ of $\op{Ind}^G_UV_\psi$ defined by \eqref{eq:non-cusp-whittaker-model} is a Whittaker model for $\rho$, and the function $f_1$ defined by \eqref{eq:f1-on-b} and \eqref{eq:f1-on-bwu} is a Bessel vector for $\rho$ in this model.
+\end{lemma}
+In order to compute $\Gamma_\rho(\omega)$, we now have to compute by \eqref{eq:general-gamma}
+\begin{equation}
+	W_{f_1}\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)=\sum_{z\in K}f_1\left(\begin{bmatrix}
+		0 & 1 \\
+		1 & 0
+	\end{bmatrix}\begin{bmatrix}
+		1 & z \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\psi(z)^{-1}. \label{eq:compute-w-f1}
+\end{equation}
+For $z=0$, we have by \eqref{eq:f1-on-b} that
+\[f_1\left(\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\right)=f_1\left(\begin{bmatrix}
+	x & 0 \\
+	0 & 1
+\end{bmatrix}\right)=0.\]
+If $z\ne0$, then
+\[\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}\begin{bmatrix}
+	1 & z \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}=\begin{bmatrix}
+	-z^{-1} & x \\
+	0 & zx
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}\begin{bmatrix}
+	1 & (zx)^{-1} \\
+	0 & 1
+\end{bmatrix};\]
+hence by \eqref{eq:f1-on-bwu},
+\[f_1\left(\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}\begin{bmatrix}
+	1 & z \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\right)=\mu_1\left(-z^{-1}\right)\mu_2(zx)\psi\left((zx)^{-1}.\right)\]
+It follows from \eqref{eq:compute-w-f1} that
+\[W_{f_1}\left(\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\right)=\sum_{z\in K^\times}\mu_1\left(-z^{-1}\right)\mu_2(zx)\psi\left((zx)^{-1}-z\right)=\sum_{rs=-x^{-1}}\mu_1(r)^{-1}\mu_2(s)^{-1}\psi(s+r).\]
+Also, by \eqref{eq:f1-on-bwu}
+\[W_{f_1}\left(\begin{bmatrix}
+	1 & 0 \\
+	0 & 1
+\end{bmatrix}\right)=\sum_{z\in K}f_1\left(w\begin{bmatrix}
+	1 & z \\
+	0 & 1
+\end{bmatrix}\right)\psi(z)^{-1}=\sum_{z\in K}\psi(z)\psi(z)^{-1}=q.\]
+Hence,
+\[J_\rho\left(\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\right)=\frac1q\sum_{rs=-x^{-1}}\mu_1(r)^{-1}\mu_2(s)^{-1}\psi(s+r).\]
+Substituting this value in formula \eqref{eq:general-gamma}, we obtain
+\begin{align*}
+	\Gamma_\rho(\omega) &= \sum_{x\in K^\times}J_\rho\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\omega(x) \\
+	&= \frac1q\sum_{x\in K^\times}\sum_{rs=-x^{-1}}\mu_1(r)^{-1}\mu_2(s)^{-1}\psi(r)\psi(s)\omega(x) \\
+	&= \frac1q\frac1q\sum_{x\in K^\times}\sum_{rs=-x^{-1}}\mu_1(r)^{-1}\mu_2(s)^{-1}\psi(r)\psi(s)\omega\left(-r^{-1}s^{-1}\right) \\
+	&= \frac{\omega(-1)}q\sum_{r\in K^\times}\mu_1(r)^{-1}\omega(r)^{-1}\psi(r)\sum_{s\in K^\times}\mu_2(s)^{-1}\omega(s)^{-1}\psi(s).
+\end{align*}
+Now, recall that for a character $\chi$ of $K^\times$, one defines the Gauss sum
+\[G(\chi,\psi)\coloneqq\sum_{x\in K^\times}\chi(x)\psi(x).\]
+We have therefore proved the following.
+\begin{theorem} \label{thm:gamma-of-non-cusp}
+	Let $\mu_1$ and $\mu_2$ be characters of $K^\times$, and let $\rho\coloneqq\rho_{(\mu_1,\mu_2)}$ be the corresponding irreducible representations of $G$. If $\omega$ is a character of $K^\times$, then
+	\[\Gamma_\rho(\omega)=\frac{\omega(-1)}qG\left(\mu_1^{-1}\omega^{-1},\psi\right)G\left(\mu_2^{-1}\omega^{-1},\psi\right).\]
+\end{theorem}
+\begin{remark}
+	It is well-known that $\left|G(\chi,\psi)\right|=\sqrt q$ for every character $\chi$ of $K^\times$; hence, $\left|\Gamma_\rho(\omega)\right|=1$.
+\end{remark}
+\begin{remark}
+	If $\psi'$ is another non-unit character of $K^+$, then there exists an $\alpha$ such that $\psi'(x)=\psi(\alpha x)$. It follows that $G(\chi,\psi')=\chi(\alpha)^{-1}G(\chi,\psi)$. Hence, if we denote by $\Gamma_\rho'$ the $\Gamma$-function of $\rho$ obtained by using $\psi'$ instead of $\psi$, we obtain $\Gamma_\rho'(\omega)=\omega(\alpha)^2\mu_1(\alpha)\mu_2(\alpha)\Gamma_\rho(\omega)$.
+\end{remark}
 
 \section{A computation of \texorpdfstring{$\Gamma_\rho(\omega)$}{ Gamma rho(omega)} for a cuspidal \texorpdfstring{$\rho$}{ rho}}
+Let $\nu$ be a non-decomposable character of $L^\times$, and let $\rho\coloneqq\rho_\nu$ be the corresponding cuspidal representation of $G$. Then $\rho(w')$ acts on a function $f\colon K^\times\to\CC$ by
+\begin{equation}
+	(\rho(w')f)(x)=\sum_{\substack{y\in K^\times\\\op Nt=u}}\nu(y)^{-1}j(yx)f(y), \label{eq:cuspidal-wp}
+\end{equation}
+where $j=j_\nu$ is the function of $K^\times$ given by
+\[j(u)\coloneqq -q^{-1}\sum_{\substack{t\in L\\\op Nt=u}}\psi\left(t+\overline t\right)\nu(t)\]
+(see \cref{sec:def-cusp}). In particular, we apply \eqref{eq:cuspidal-wp} to the function
+\[f'(x)\coloneqq J_\rho\left(\begin{bmatrix}
+	x & 0 \\
+	0 & 1
+\end{bmatrix}\right)\]
+which is equal to $1$ for $x=1$ and equal to $0$ if $x\ne1$ (by \eqref{eq:bessel-on-a}). Also,
+\[(\rho(w')f')(x)=J_\rho\left(\begin{bmatrix}
+	x & 0 \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	-1 & 0
+\end{bmatrix}\right)=J_\rho\left(\begin{bmatrix}
+	0 & x \\
+	-1 & 0
+\end{bmatrix}\right).\]
+Hence, \eqref{eq:cuspidal-wp} implies
+\[J_\rho\left(\begin{bmatrix}
+	0 & x \\
+	-1 & 0
+\end{bmatrix}\right)=j(x).\]
+Also,
+\[\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}=\begin{bmatrix}
+	0 & -x^{-1} \\
+	-1 & 0
+\end{bmatrix}\begin{bmatrix}
+	-x & 0 \\
+	0 & -x
+\end{bmatrix};\]
+hence by \eqref{eq:def-cusp-b},
+\[J_\rho\left(\begin{bmatrix}
+	0 & 1 \\
+	x & 0
+\end{bmatrix}\right)=\left(\rho\left(\begin{bmatrix}
+	-x & 0 \\
+	0 & -x
+\end{bmatrix}\right)J_\rho\right)\left(\begin{bmatrix}
+	0 & -x^{-1} \\
+	-1 & 0
+\end{bmatrix}\right)=\nu(-x)J_\rho\left(\begin{bmatrix}
+	0 & -x^{-1} \\
+	-1 & 0
+\end{bmatrix}\right).\]
+Hence, if $\omega$ is a character of $K^\times$, then
+\begin{align*}
+	\Gamma_\rho(\omega) &= \sum_{x\in K^\times}J_\rho\left(\begin{bmatrix}
+		0 & 1 \\
+		x & 0
+	\end{bmatrix}\right)\omega(x) \\
+	&= \sum_{x\in K^\times}\nu(-x)j\left(-x^{-1}\right)\omega(x) \\
+	&= -q^{-1}\sum_{x\in K^\times}\nu(-x)\omega(x)\sum_{\substack{t\in L^\times\\\op Nt=-x^{-1}}}\psi\left(t+\overline t\right)\nu(t) \\
+	&= -q^{-1}\omega(-1)\sum_{t\in L^\times}\nu\left(\overline t\right)^{-1}\omega\left(t\overline t\right)^{-1}\psi\left(t+\overline t\right) \\
+	&= -q^{-1}\omega(-1)\sum_{t\in L^\times}\nu\left(t\right)^{-1}\omega\left(t\overline t\right)^{-1}\psi\left(t+\overline t\right).
+\end{align*}
+Note that the last sum is a Gauss sum for the field $L$. Hence, we have proved a result similar to \Cref{thm:gamma-of-non-cusp}.
+\begin{theorem}
+	Let $\nu$ be a non-decomposable character of $L^\times$ and let $\rho\coloneqq\rho_\nu$ be the corresponding cuspidal representation of $G$. Then
+	\[\Gamma_\rho(\omega)=-\frac{\omega(-1)}q\sum_{t\in L^\times}\nu(t)^{-1}\omega\left(t\overline t\right)^{-1}\psi\left(t+\overline t\right)=-\frac{\omega(-1)}qG_L\left(\nu^{-1}\cdot\left(\omega\circ\op N_{L/K}\right)^{-1},\psi\circ\op{Tr}_{L/K}\right)\]
+	for every character $\omega$ of $K$.\todo{Check that this is right.}
+\end{theorem}
+\begin{remark}
+	As in the non-cuspidal case, $\left|\Gamma_\rho(\omega)\right|=1$ because $\left|L\right|=q^2$. Also, if $\psi'(x)=\psi(\alpha x)$ is another character of $K^\times$, then $\Gamma'_\rho(\omega)=\nu(\alpha)\omega(\alpha)^2\Gamma_\rho(\omega)$.
+\end{remark}
 
 \section{The characters of \texorpdfstring{$G$}{ G}}
+We conclude our exposition on the representations of $G$ with a computation of its characters table, i.e., the values of the irreducible higher-dimensional characters at the representatives of the conjugacy classes of $G$. We recall that there are four families of representatives.
+\begin{align*}
+	c_1(x) &= \begin{bmatrix}
+		x & 0 \\
+		0 & x
+	\end{bmatrix} \qquad\text{for }x\in K^\times, \\
+	c_2(x) &= \begin{bmatrix}
+		x & 1 \\
+		0 & x
+	\end{bmatrix} \qquad\text{for }x\in K^\times, \\
+	c_3(x,y) &= \begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix} \qquad\text{for }x,y\in K^\times\text{ and }x\ne y, \\
+	c_4(z) &= \begin{bmatrix}
+		0 & -z\overline z \\
+		1 & z+\overline z
+	\end{bmatrix} \qquad\text{for }z\in L\setminus K.
+\end{align*}
+
+\subsection{The Gelfand--Graev Character}
+We start with the computation of the Gelfand--Graev character: let $\widehat\psi\coloneqq\op{Ind}^G_U\psi$. Denote by $\widetilde\psi$ the function on $G$ that coincides with $\psi$ on $U$ and is equal to zero elsewhere. Then
+\[\chi_{\widehat\psi}(g)=\sum_{s\in U\backslash G}\widetilde\psi\left(sgs^{-1}\right).\]
+In particular, if $g$ is not conjugate to an element of $U$, then $\chi_{\widetilde\psi}(g)=0$. The only eigenvalue of the elements of $U$ is $1$. It follows that representatives on which $\chi_{\widehat\psi}$ might not vanish are $c_1(1)$ and $c_2(1)$. Clearly, $\chi_{\widetilde\psi}(c_1(1))=\chi_{\widehat\psi}(1)=\dim\widehat\psi=(q-1)q(q+1)$. In order to compute the value of $\chi_{\widehat\psi}$ at $c_2(1)$, we prove the following lemma.
+\begin{lemma} \label{lem:conj-classes-of-t}
+	For any $s\in G$,
+	\[s\begin{bmatrix}
+		1 & 1 \\
+		0 & 1
+	\end{bmatrix}s^{-1}\in U\]
+	if and only if $s\in B$.
+\end{lemma}
+\begin{proof}
+	Let $s\coloneqq\begin{bmatrix}
+		\alpha & \beta \\
+		\gamma & \delta
+	\end{bmatrix}$ be an element of $G$, and let $s^{-1}\coloneqq\begin{bmatrix}
+		\alpha' & \beta '\\
+		\gamma' & \delta'
+	\end{bmatrix}$. Then $s\in B$ if and only if $\gamma=0$ (which is equivalent to $\gamma'=0$). The lemma therefore follows from
+	\begin{align*}
+		\begin{bmatrix}
+			\alpha & \beta \\
+			\gamma & \delta
+		\end{bmatrix}\begin{bmatrix}
+			1 & 1 \\
+			0 & 1
+		\end{bmatrix}\begin{bmatrix}
+			\alpha' & \beta' \\
+			\gamma' & \delta'
+		\end{bmatrix} &= \begin{bmatrix}
+			\alpha & \beta \\
+			\gamma & \delta
+		\end{bmatrix}\left(\begin{bmatrix}
+			1 & 0 \\
+			0 & 1
+		\end{bmatrix}+\begin{bmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{bmatrix}\right)\begin{bmatrix}
+			\alpha' & \beta' \\
+			\gamma' & \delta'
+		\end{bmatrix} \\
+		&= \begin{bmatrix}
+			1 & 0 \\
+			0 & 1
+		\end{bmatrix}+\begin{bmatrix}
+			\alpha\gamma' & \alpha\delta' \\
+			\gamma\gamma' & \gamma\delta'
+		\end{bmatrix} \\
+		&= \begin{bmatrix}
+			1+\alpha\gamma' & \alpha\delta' \\
+			\gamma\gamma' & 1+\gamma\delta'
+		\end{bmatrix},
+	\end{align*}
+	which is in $U$ if and only if $\gamma=\gamma'=0$.
+\end{proof}
+The lemma implies that
+\begin{align*}
+	\chi_{\widehat\psi}\left(\begin{bmatrix}
+		1 & 1 \\
+		0 & 1
+	\end{bmatrix}\right) &= \sum_{s\in U\backslash B}\psi\left(s\begin{bmatrix}
+		1 & 1 \\
+		0 & 1
+	\end{bmatrix}s^{-1}\right) \\
+	&= \sum_{\alpha,\delta\in K^\times}\psi\left(\begin{bmatrix}
+		\alpha & 0 \\
+		0 & \delta
+	\end{bmatrix}\begin{bmatrix}
+		1 & 1 \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		\alpha^{-1} & 0 \\
+		0 & \delta^{-1}
+	\end{bmatrix}\right) \\
+	&= \sum_{\alpha,\delta\in K^\times}\psi\left(\begin{bmatrix}
+		1 & \alpha\delta^{-1} \\
+		0 & 1
+	\end{bmatrix}\right) \\
+	&= (q-1)\sum_{x\in K^\times}\psi(x) \\
+	&= 1-q.
+\end{align*}
+We have therefore proved the following.
+\begin{theorem}
+	Let $\widehat\psi\coloneqq\op{Ind}^G_U\widehat\psi$. Then
+	\begin{align*}
+		\chi_{\widehat\psi}(c_1(1)) &= (q-1)q(q+1), \\
+		\chi_{\widehat\psi}(c_1(x)) &= 0 \qquad\text{if }x\ne1, \\
+		\chi_{\widehat\psi}(c_2(1)) &= q-1, \\
+		\chi_{\widehat\psi}(c_2(x)) &= 0 \qquad\text{if }x\ne1, \\
+		\chi_{\widehat\psi}(c_3(x,y)) &= 0, \\
+		\chi_{\widehat\psi}(c_4(z)) &= 0.
+	\end{align*}
+\end{theorem}
+
+\subsection{Non-Cuspidal Characters}
+Let $\mu$ be a character of $B$ which is defined by the pair of characters $(\mu_1,\mu_2)$ of $K^\times$ through the formula
+\[\mu\left(\begin{bmatrix}
+	\alpha & \beta \\
+	0 & \delta
+\end{bmatrix}\right)\coloneqq\mu_1(\alpha)\mu_2(\alpha).\]
+Let $\widehat\mu\coloneqq\op{Ind}^G_B\mu$, and we compute $\chi_{\widehat\mu}$. First,
+\[\chi_{\widehat\mu}(c_1(x)) = \chi\left(\begin{bmatrix}
+	x & 0 \\
+	0 & x
+\end{bmatrix}\right) = \sum_{s\in B\backslash G}\mu\left(s\begin{bmatrix}
+	x & 0 \\
+	0 & x
+\end{bmatrix}s^{-1}\right)=[G:B]\mu\left(\begin{bmatrix}
+	x & 0 \\
+	0 & x
+\end{bmatrix}\right)=(q+1)\mu_1(x)\mu_2(x).\]
+Second, as in \Cref{lem:conj-classes-of-t}, one proves that
+\[s\begin{bmatrix}
+	x & 1 \\
+	0 & x
+\end{bmatrix}s^{-1}\in B\iff s\in B.\]
+Hence,
+\[\chi_{\widehat\mu}(c_2(x))=\mu\left(\begin{bmatrix}
+	x & 1 \\
+	0 & x
+\end{bmatrix}\right)=\mu_1(x)\mu_2(x).\]
+In order to compute the value of $\chi_{\widehat\mu}$ at $c_3(x,y)$, we note that a direct computation shows that
+\begin{equation}
+	\begin{bmatrix}
+		\alpha & \beta \\
+		\gamma & \delta
+	\end{bmatrix}\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\begin{bmatrix}
+		\alpha & \beta \\
+		\gamma & \delta
+	\end{bmatrix}^{-1}\in B\iff\gamma=0\text{ or }\delta=0. \label{eq:c3-in-b}
+\end{equation}
+Elements of $B\backslash G$ that satisfy the left-hand side of \eqref{eq:c3-in-b} are therefore $1$ and $w$. Indeed,
+\[\begin{bmatrix}
+	\alpha & \beta \\
+	\gamma & 0
+\end{bmatrix}=\begin{bmatrix}
+	\beta & \alpha \\
+	0 & \gamma
+\end{bmatrix}\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}.\]
+Hence,
+\begin{align*}
+	\chi_{\widehat\mu}(c_3(x,y)) &= \mu\left(\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\right)+\mu\left(\begin{bmatrix}
+		0 & 1 \\
+		1 & 0
+	\end{bmatrix}\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\begin{bmatrix}
+		0 & 1 \\
+		1 & 0
+	\end{bmatrix}\right) \\
+	&= \mu\left(\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\right)+\mu\left(\begin{bmatrix}
+		y & 0 \\
+		0 & x
+	\end{bmatrix}\right) \\
+	&= \mu_1(x)\mu_2(y)+\mu_1(y)\mu_2(x).
+\end{align*}
+Finally, recall that the eigenvalues of the elements $c_4(z)$ do not belong to $K$. Hence, the $c_4(z)$ are not conjugate to elements of $B$ and therefore $\chi_{\widehat\mu}(c_4(z))=0$.
+
+If $\mu_1\ne\mu_2$, then $\widehat\mu$ is an irreducible representation of $G$. Its character has therefore been computed.
+
+If $\mu_1=\mu_2$, then $\widehat\mu=\rho'\oplus\rho$, where $\rho'$ is a one-dimensional character given by the formula $\rho'(g)=\mu_1(\det g)$ (by \Cref{lem:to-reducible}). Hence, $\rho'(c_1(x))=\mu_1(x)^2$, $\rho'(c_2(x))=\mu_1(x)^2$, $\rho'(c_3(x,y))=\mu_1(x)\mu_1(y)$, and $\rho'(c_4(z))=\mu_1(z\overline z)$. The values of $\chi_\rho$ can therefore be computed from the above data and from the formula $\chi_\rho(g)=\chi_{\widehat\mu}(g)-\mu_1(\det g)$.
+
+\subsection{Cuspidal Characters}
+The most difficult computation is presented by cuspidal representations. Let $\nu$ be a non-decomposable character of $L^\times$, and let $\rho\coloneqq\rho_\nu$ be the corresponding cuspidal representation. As $V_\rho$ we choose, as we did in \cref{sec:def-cusp}, the space $F\left(K^\times,\CC\right)$ of all functions $f\colon K^\times\to\CC$. Let $W_f$ be the Whittaker functions for $\rho$, and let $J_\rho$ be its Bessel function. Then
+\begin{equation}
+	W_f(g)=\sum_{y\in K^\times}W_f\left(\begin{bmatrix}
+		y & 0 \\
+		0 & 1
+	\end{bmatrix}\right)J_\rho\left(g\begin{bmatrix}
+		y^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\right). \label{eq:whittaker-of-cusp}
+\end{equation}
+Indeed, both sides of \eqref{eq:whittaker-of-cusp} are Whittaker functions, and they coincide on $A$ because $J_\rho(a)=0$ if $1\ne a\in A$ and $J_\rho(1)=1$. Hence, by \Cref{lem:ker-r-computation}, they coincide on $g$s (recall that $J(V_\rho)=0$).\footnote{More precisely, we see that the summation (as a function of $g$) lives in the image of $V_\rho$ in $\op{Ind}^G_U\psi$, and \Cref{lem:ker-r-computation} says that $r\colon\op{Ind}^G_U\psi\to F\left(K^\times,\CC\right)$ is injective on the image of $V_\rho$.} The same lemma implies that for every function $\varphi\colon K^\times\to\CC$, there exists an $f\in V_\rho$ such that
+\[W_f\left(\begin{bmatrix}
+	x & 0 \\
+	0 & 1
+\end{bmatrix}\right)=\varphi(x)\qquad\text{for }x\in K^\times.\]
+It follows by \eqref{eq:whittaker-of-cusp} that
+\begin{equation}
+	(\rho(g)\varphi)(x)\coloneqq W_{\rho(g)f}\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}\right)=W_f\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}g\right)=\sum_{t\in K^\times}\varphi(y)J_\rho\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}g\begin{bmatrix}
+		y^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\right). \label{eq:def-g-phi}
+\end{equation}
+
+The space $F\left(K^\times,\CC\right)$ has a natural basis $\left\{\varphi_\alpha:\alpha\in K^\times\right\}$, where $\varphi_\alpha(\alpha)=1$ and $\varphi_\alpha(x)$ if $x\ne\alpha$. Substituting $\varphi=\varphi_\alpha$ in \eqref{eq:def-g-phi}, we have
+\[(\rho(g)\varphi_\alpha)(x)=J_\rho\left(\begin{bmatrix}
+	x & 0 \\
+	0 & 1
+\end{bmatrix}g\begin{bmatrix}
+	\alpha^{-1} & 0 \\
+	0 & 1
+\end{bmatrix}\right).\]
+The collection of all the elements on the right-hand side gives a $(q-1)\times(q-1)$ matrix representing $\rho(g)$. The trace of this matrix is
+\begin{equation}
+	\chi_\rho(g) = \sum_{x\in K^\times}J_\rho\left(\begin{bmatrix}
+		x & 0 \\
+		0 & 1
+	\end{bmatrix}g\begin{bmatrix}
+		x^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\right). \label{eq:chi-cuspidal-formula}
+\end{equation}
+In order to apply this formula, we compute $J_\rho$ for some values of $G$. Let $f_1$ be a Bessel vector for $\rho$. Then
+\[\rho\left(\begin{bmatrix}
+	x & \alpha \\
+	0 & x
+\end{bmatrix}\right)f_1=\nu(x)\psi\left(x^{-1}\alpha\right)f_1\]
+by \eqref{eq:def-cusp-b}. Hence,
+\[J_\rho\left(g\begin{bmatrix}
+	x & \alpha \\
+	0 & x
+\end{bmatrix}\right)=W_{f_1}(1)^{-1}W_{f_1}\left(g\begin{bmatrix}
+	x & \alpha \\
+	0 & x
+\end{bmatrix}\right)=W_{f_1}(1)^{-1}W_{\rho\left(\begin{bmatrix}
+	x & \alpha \\
+	0 & x
+\end{bmatrix}\right)f_1}(g)=\nu(x)\psi\left(x^{-1}\alpha\right)J_\rho(g).\]
+
+The computation of $\chi_\rho$ for $c_1(x)$ is now
+\[\chi_\rho\left(\begin{bmatrix}
+	x & 0 \\
+	0 & x
+\end{bmatrix}\right)=\sum_{\alpha\in K^\times}J_\rho\left(\begin{bmatrix}
+	\alpha & 0 \\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	x & 0 \\
+	0 & x
+\end{bmatrix}\begin{bmatrix}
+	\alpha^{-1} & 0 \\
+	0 & 1
+\end{bmatrix}\right)=(q-1)J_\rho\left(\begin{bmatrix}
+	x & 0 \\
+	0 & x
+\end{bmatrix}\right)=(q-1)\nu(x).\]
+For $c_2(x)$, we have
+\begin{align*}
+	\chi_\rho\left(\begin{bmatrix}
+		x & 1 \\
+		0 & x
+	\end{bmatrix}\right) &= \sum_{\alpha\in K^\times}J_\rho\left(\begin{bmatrix}
+		\alpha & 0 \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		x & 1 \\
+		0 & x
+	\end{bmatrix}\begin{bmatrix}
+		\alpha^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\right) \\
+	&= \sum_{\alpha\in K^\times}J_\rho\left(\begin{bmatrix}
+		x & \alpha \\
+		0 & x
+	\end{bmatrix}\right) \\
+	&= \nu(x)\sum_{\alpha\in K^\times}\psi\left(x^{-1}\alpha\right) \\
+	&= -\nu(x).
+\end{align*}
+For $c_3(x,y)$, we have
+\begin{align*}
+	\chi_\rho\left(\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\right) &= \sum_{\alpha\in K^\times}J_\rho\left(\begin{bmatrix}
+		\alpha & 0 \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\begin{bmatrix}
+		\alpha^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\right) \\
+	&= (q-1)J_\rho\left(\begin{bmatrix}
+		x & 0 \\
+		0 & y
+	\end{bmatrix}\right) \\
+	&= (q-1)J_\rho\left(\begin{bmatrix}
+		xy^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\begin{bmatrix}
+		y & 0 \\
+		0 & y
+	\end{bmatrix}\right) \\
+	&= (q-1)\nu(y)J_\rho\left(\begin{bmatrix}
+		xy^{-1} & 0 \\
+		0 & 1
+	\end{bmatrix}\right) \\
+	&= 0
+\end{align*}
+because $x\ne y$.
+
+The computation of $\chi_\rho(c_4(z))$ does not rely on \eqref{eq:chi-cuspidal-formula}, but rather on formulas \eqref{eq:general-cuspidal-def} and \eqref{eq:general-cuspidal-matrix}. Formula \eqref{eq:general-cuspidal-def} implies that $(k(y,x;g))_{x,y\in K^\times}$ is the matrix representing $\rho(g)$ with respect to the natural basis. Its trace is
+\[\chi_\rho(g)=\sum_{x\in K^\times}k(x,x;g).\]
+In particular, let $a\coloneqq z+\overline z$ and $b\coloneqq-z\overline z$. Then
+\begin{align*}
+	\chi_\rho(c_4(z)) &= \sum_{x\in K^\times}k\left(x,x;\begin{bmatrix}
+		0 & b \\
+		1 & a
+	\end{bmatrix}\right) \\
+	&= -q^{-1}\sum_{x\in K^\times}\psi(ax)\sum_{\substack{u\overline u=-b\\u\in L^\times}}\psi\left(-x(u+\overline u)\right)\nu(u) \\
+	&= -q^{-1}\sum_{\substack{u\overline u=-b\\u\in L^\times}}\nu(u)\sum_{x\in K^\times}\psi(x(a-(u+\overline u))).
+\end{align*}
+If $u=z$ or $u=\overline z$, then $a=u+\overline u$; hence, $\sum_{x\in K^\times}\psi(x(a-(u+\overline u)))=q-1$. If $u\ne z$ and $u\ne\overline z$ and $u\overline u=-b$, then $a\ne u+\overline u$; hence, $\sum_{x\in K^\times}\psi(x(a-(u+\overline u)))=-1$. It follows that
+\begin{align*}
+	\chi_\rho(c_4(z)) &= -q^{-1}\Bigg((q-1)\nu(z)+(q-1)\nu(\overline z)-\sum_{\substack{u\ne z,\overline z\\u\overline u=-b}}\nu(u)\Bigg) \\
+	&= -q^{-1}\Bigg((q\nu(z)+q\nu(\overline z))-\sum_{\substack{u\in L\\u\overline u=-b}}\nu(u)\Bigg) \\
+	&= -\nu(z)-\nu(\overline z),
+\end{align*}
+because by \Cref{lem:sum-over-equal-norm} $\nu$ is non-decomposable and hence $\sum_{u\overline u=-b}\nu(u)=0$.
+
+We sum up the character values computed in this section in the following table. Here, $\nu$ is a non-decomposable character of $K^\times$, and $1_{1=x}$ is the Kronecker symbol, equal to $1$ if $x=1$ and to zero if $1\ne x$. The columns gives the values of the characters of the corresponding representations.
+\[\begin{array}{c|c|c|c|c}
+	\text{Repr.} & c_1(x) & c_2(x) & c_3(x,y) & c_4(z) \\\hline\hline
+	\rho_\nu & (q-1)\nu(x) & -\nu(x) & 0 & -\nu(z)-\nu(\overline z) \\\hline
+	\rho_{(\mu_1,\mu_1)} & q\mu_1(x)^2 & 0 & \mu_1(xy) & -\mu_1(z\overline z) \\\hline
+	\rho_{(\mu_1,\mu_2)} & (q+1)\mu_1(x)\mu_2(x) & \mu_1(x)\mu_2(x) & \mu_1(x)\mu_2(y)+\mu_1(y)\mu_2(x) & 0 \\\hline
+	\op{Ind}^G_U\psi & (q-1)q(q+1)1_{1=x} & (1-q)1_{1=x} & 0 & 0
+\end{array}\]
+The columns gives the dimension and number of the representations of the corresponding type.
+\[\begin{array}{c|c|c}
+	\text{Repr.} & \text{Dim.} & \text{Num.} \\\hline\hline
+	\rho_\nu & q-1 & \frac12\left(q^2-q\right) \\\hline
+	\rho_{(\mu_1,\mu_1)} & q & q-1 \\\hline
+	\rho_{(\mu_1,\mu_2)} & q+1 & \frac12(q-1)(q-2) \\\hline
+	\op{Ind}^G_U\psi & (q-1)q(q+1) & 1 
+\end{array}\]
 
 \end{document}
